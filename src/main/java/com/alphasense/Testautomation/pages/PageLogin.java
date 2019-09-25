@@ -145,8 +145,7 @@ public class PageLogin extends BaseClass {
 		 	String sUserName = ExcelUtils.getCellData(iTestCaseRow, Constant.Col_UserName);
 
 	     	// Here we are sending the UserName string to the UserName input_email
-		 	
-		 	
+		 			 	
 	        input_email().sendKeys(sUserName); 
 	     
 	         // Printing the logs for what we have just performed
@@ -161,6 +160,9 @@ public class PageLogin extends BaseClass {
 	         pathToScreenshot=Utils.takeScreenshot(driver);
 		     pdfgenerator.conteudoPDF("Entered Username and Password and click in Sign In Button", pathToScreenshot);
 	         button_SignIn().click();
+	         
+	         pathToScreenshot=Utils.takeScreenshot(driver);
+		     pdfgenerator.conteudoPDF("My Account", pathToScreenshot);
 	         
 	          if(button_OrderHistoryDetails().isDisplayed()){
 	        	 bResult = true;
@@ -177,10 +179,10 @@ public class PageLogin extends BaseClass {
 			
 	         return bResult;
 	     }
-	 
-	 public boolean LoginIntoMyStore(String user, String password) throws Exception{
+ 	 
+	 public static boolean LoginIntoMyStore(String user, String password) throws Exception{
 	     	
-	     	Utils.takeScreenshot(driver);
+	     	
 		 	link_SignIn().click();
 		 	
 		 	
@@ -188,12 +190,17 @@ public class PageLogin extends BaseClass {
 	        input_password().sendKeys(password);
 	        Utils.takeScreenshot(driver);
 	      
+	        pathToScreenshot=Utils.takeScreenshot(driver);
+		     pdfgenerator.conteudoPDF("Performing the Login", pathToScreenshot);
+	         
 	        button_SignIn().click();
 	        Utils.takeScreenshot(driver); 
 	       
 	        if(button_OrderHistoryDetails().isDisplayed()){
 	        	 bResult = true;
-	        	
+	        	 pathToScreenshot=Utils.takeScreenshot(driver);
+			     pdfgenerator.conteudoPDF("Validation of the error message", pathToScreenshot);
+		         
 	         }else {
 	        	 bResult = false;
 	        	

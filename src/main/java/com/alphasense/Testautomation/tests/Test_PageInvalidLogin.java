@@ -1,5 +1,7 @@
 package com.alphasense.Testautomation.tests;
 
+import java.io.IOException;
+
 import org.apache.log4j.extras.DOMConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -12,7 +14,9 @@ import com.alphasense.Testautomation.pages.PageLogin;
 import com.alphasense.Testautomation.utility.Constant;
 import com.alphasense.Testautomation.utility.ExcelUtils;
 import com.alphasense.Testautomation.utility.Log;
+import com.alphasense.Testautomation.utility.PDFGenerator;
 import com.alphasense.Testautomation.utility.Utils;
+import com.itextpdf.text.DocumentException;
 
 public class Test_PageInvalidLogin{
 
@@ -20,6 +24,8 @@ public class Test_PageInvalidLogin{
 	public WebDriver driver = null;
 	public static String sTestCaseName;
 	public static int iTestCaseRow;
+	PDFGenerator pdfgenerator = new PDFGenerator();
+	public static boolean result;
 
 	  @BeforeMethod
 	  public void beforeMethod() throws Exception {
@@ -33,6 +39,7 @@ public class Test_PageInvalidLogin{
 			Log.startTestCase(sTestCaseName);
 			
 		  driver = Utils.OpenBrowser(iTestCaseRow);
+		  pdfgenerator.iniciaPDF(sTestCaseName);
 		
 			new BaseClass(driver);  
 	        }
@@ -40,7 +47,8 @@ public class Test_PageInvalidLogin{
 	  @Test
 	  public void TestMethod() throws Exception {
 		  try{
-			boolean result=PageLogin.DoLogin(iTestCaseRow);;
+			  
+			 result=PageLogin.LoginIntoMyStore(Utils.configProp().getProperty("user").toString(), Utils.configProp().getProperty("passwd").toString());
 			  
 		//	Assert.assertEquals(false, result);  
 			if(result == false) {
@@ -56,8 +64,9 @@ public class Test_PageInvalidLogin{
 			
 	  }
 	  @AfterMethod
-	  public void afterMethod() {
+	  public void afterMethod() throws DocumentException, IOException {
 		   Log.endTestCase(sTestCaseName);
+		   pdfgenerator.fechaPDF(result);
 		   driver.close();
 	  		}
 }
