@@ -28,7 +28,7 @@ public static WebDriver OpenBrowser(int iTestCaseRow) throws Exception{
 		/*/usr/bin/chromedriver
 		 * */
 
-		System.setProperty("webdriver.chrome.driver","./drivers/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver",Utils.configProp().getProperty("chromeDriver").toString());
 		chromeOptions = new ChromeOptions();
 		
 		/*options.addArguments("--disable-notifications");
@@ -67,8 +67,8 @@ public static String getTestCaseName(String sTestCase)throws Exception{
 		 public static Properties configProp() throws Exception {
 			 try {
 				 
-				//File f = new File("src");
-		 		prop.load(new FileReader("C:\\Users\\carlos.almeida\\Documents\\SIGT\\Automation\\NewVentures\\Testautomation\\TestData\\config.properties"));
+				File f = new File("src");
+		 		prop.load(new FileReader(f.getAbsolutePath().toString()+"\\TestData\\config.properties"));
 		 		
 		 	} catch (IOException e) {
 		 		
