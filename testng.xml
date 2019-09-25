@@ -5,6 +5,10 @@
 
     <classes>
     <class name="com.alphasense.Testautomation.tests.Test_PageLogin"/>
+     <class name="com.alphasense.Testautomation.tests.Test_PageInvalidLogin"/>
+      <class name="com.alphasense.Testautomation.tests.Test_PageInvalidLogin"/>
+      <class name="com.alphasense.Testautomation.tests.Test_PageMyAccountOrderShipClothes"/>
+      <class name="com.alphasense.Testautomation.tests.Test_PageMyAccountSearchClothes"/>
     </classes>
 
   </test> <!-- Test -->
