@@ -210,4 +210,33 @@ public class PageLogin extends BaseClass {
 	         return bResult;
 	     }
 	
+	 public static boolean InvalidLoginIntoMyStore(String user, String password) throws Exception{
+	     	
+	     	
+		 	link_SignIn().click();
+		 	
+		 	
+	        input_email().sendKeys(user); 
+	        input_password().sendKeys(password);
+	        Utils.takeScreenshot(driver);
+	      
+	        pathToScreenshot=Utils.takeScreenshot(driver);
+		     pdfgenerator.conteudoPDF("Performing the Login", pathToScreenshot);
+	         
+	        button_SignIn().click();
+	        Utils.takeScreenshot(driver); 
+	       
+	        if(h1classtext_AthenticationErrorMessage().isDisplayed()){
+	        	 bResult = false;
+	        	 pathToScreenshot=Utils.takeScreenshot(driver);
+			     pdfgenerator.conteudoPDF("Validation of the error message", pathToScreenshot);
+		         
+	         }else {
+	        	 bResult = true;
+	        	
+	         }
+
+			
+	         return bResult;
+	     }
 }

@@ -48,11 +48,11 @@ public class Test_PageInvalidLogin{
 	  public void TestMethod() throws Exception {
 		  try{
 			  
-			 result=PageLogin.LoginIntoMyStore(Utils.configProp().getProperty("user").toString(), Utils.configProp().getProperty("passwd").toString());
+			 result=PageLogin.InvalidLoginIntoMyStore(Utils.configProp().getProperty("user").toString(), Utils.configProp().getProperty("invalidPass").toString());
 			  
 		//	Assert.assertEquals(false, result);  
 			if(result == false) {
-				  ExcelUtils.setCellData("Failed",iTestCaseRow, Constant.Col_Result);  
+				  ExcelUtils.setCellData("Passed",iTestCaseRow, Constant.Col_Result);  
 			  }
 
 		  }catch (Exception e){
