@@ -38,7 +38,7 @@ public class PDFGenerator {
 	public static ExtentTest test;
 	private TestRunContext context;
 	public static Document document = new Document();
-	
+	public static String path;
 
 	private Result result;
 
@@ -50,7 +50,9 @@ public class PDFGenerator {
 			//FileUtils.copyFile(screenshot, new File("screenshot.png"));
 			Document document = new Document(PageSize.A4, 50, 50, 50, 50);
 			document.setPageSize(PageSize.A4);
-			PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\carlos.almeida\\Documents\\SIGT\\Automation\\NewVentures\\Testautomation\\evidences\\alpha-sense-evidencia.pdf"));
+			//PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\carlos.almeida\\Documents\\SIGT\\Automation\\NewVentures\\Testautomation\\evidences\\alpha-sense-evidencia.pdf"));
+			PdfWriter.getInstance(document, new FileOutputStream(""+Utils.prop.getProperty("Path_ScreenShot").toString()+"\\alpha-sense-evidencia.pdf"));
+			
 			document.open();
 
 			Font f = new Font();
@@ -92,6 +94,7 @@ public class PDFGenerator {
 				color.setColor(BaseColor.GREEN);
 				document.add(new Paragraph("Status: Passed ", color));
 			} else {
+				
 				Font color = new Font();
 				color.setFamily("Courier");
 				color.setColor(BaseColor.RED);
@@ -121,7 +124,7 @@ public class PDFGenerator {
 	}
 
 	/*
-	 * Método responsável por iniciar a criação do arquivo PDF
+	 * Method responsible to start the pdf file
 	 *
 	 */
 	public void iniciaPDF(String textTestCase) throws Exception {
@@ -129,7 +132,7 @@ public class PDFGenerator {
 		document = new Document(PageSize.A4, 50, 50, 50, 50);
 		document.setPageSize(PageSize.A4);
 		new File("./evidences/").mkdirs();
-		PdfWriter.getInstance(document, new FileOutputStream(("C:\\Users\\carlos.almeida\\Documents\\SIGT\\Automation\\NewVentures\\Testautomation\\evidences\\"+textTestCase+""+System.currentTimeMillis() +"alpha-sense-evidencia.pdf")));
+		PdfWriter.getInstance(document, new FileOutputStream(("//evidences//"+textTestCase+""+System.currentTimeMillis() +"alpha-sense-evidencia.pdf")));
 		//PdfWriter.getInstance(document, new FileOutputStream("//" + "Feature " + featureName + "//" + "evidencia.pdf"));
 		document.open();
 
@@ -143,7 +146,8 @@ public class PDFGenerator {
 		font.setStyle(Font.BOLD);
 		font.setSize(20);
 		
-		Image logo = Image.getInstance("C:\\Users\\carlos.almeida\\Documents\\SIGT\\Automation\\NewVentures\\Testautomation\\font\\brandmark.png");
+		//Image logo = Image.getInstance("C:\\Users\\carlos.almeida\\Documents\\SIGT\\Automation\\NewVentures\\Testautomation\\font\\brandmark.png");
+		Image logo = Image.getInstance(Utils.prop.getProperty("brandmark").toString());
 		logo.scalePercent(10);
 		document.add(logo);
 
@@ -171,12 +175,12 @@ public class PDFGenerator {
 	}
 
 	/*
-	 * Método responsável pelo conteúdo de cada step do BDD no arquivo PDF.
+	 * Method Responsible for adding the content in the document
 	 *
 	 */
 	public void conteudoPDF(String conteudoTestCaseTexts, String evidenceStringPath) throws Exception, DocumentException {
 
-		
+		document.newPage();
 		Font color = new Font();
 		color.setFamily("Courier");
 		color.setStyle(Font.BOLD);
@@ -201,7 +205,7 @@ public class PDFGenerator {
 	
 	
 /*
- * Método responsável por finalizar o PDF e, no caso de falha, tira uma evidência. 
+ * MEthod Responsible to close the pdf file
  */
 	public void fechaPDF(boolean bResult) throws DocumentException, IOException {
 		if (bResult == false) {

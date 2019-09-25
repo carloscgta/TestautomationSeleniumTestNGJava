@@ -29,11 +29,12 @@ public class Test_PageLogin {
 	  @BeforeMethod
 	  public void beforeMethod() throws Exception {
 		  
-		 
+	
+				 
 		  DOMConfigurator.configure("log4j.xml");
 		  	sTestCaseName = this.toString();
 			sTestCaseName = Utils.getTestCaseName(this.toString());
-			ExcelUtils.setExcelFile(Constant.Path_TestData + Constant.File_TestData, "Test_PageLogin");
+			ExcelUtils.setExcelFile(Utils.prop.getProperty("Path_TestData").toString() + Utils.prop.getProperty("File_TestData").toString(), "Test_PageLogin");
 			iTestCaseRow = ExcelUtils.getRowContains(sTestCaseName,Constant.Col_TestCaseName);
 			Log.startTestCase(sTestCaseName);
 			
@@ -53,10 +54,10 @@ public class Test_PageLogin {
 			if(result == true) {
 				  ExcelUtils.setCellData("Passed", iTestCaseRow, Constant.Col_Result);  
 			  }
-			//pdfgenerator.geraPDF(sTestCaseName, result);
+		
 			
 		  }catch (Exception e){
-			 //ExcelUtils.setCellData("Fail", Hooks.iTestCaseRow, Constant.Col_Result);
+			 ExcelUtils.setCellData("Failed", iTestCaseRow, Constant.Col_Result);
 			 //Utils.takeScreenshot(driver, Hooks.sTestCaseName);
 			  Log.error(e.getMessage());
 			  throw (e);
