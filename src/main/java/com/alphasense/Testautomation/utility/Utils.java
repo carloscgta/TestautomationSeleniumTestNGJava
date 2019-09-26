@@ -21,28 +21,19 @@ public class Utils {
 	public static String pathToScreenshot;
 	
 public static WebDriver OpenBrowser(int iTestCaseRow) throws Exception{
-	//String sBrowserName=null;
+
 	try{
-	//sBrowserName = ExcelUtils.getCellData(iTestCaseRow, Constant.Col_Browser);
-	
-		/*/usr/bin/chromedriver
-		 * */
 
 		System.setProperty("webdriver.chrome.driver",Utils.configProp().getProperty("chromeDriver").toString());
 		chromeOptions = new ChromeOptions();
-		
-		/*options.addArguments("--disable-notifications");
-		options.addArguments("disable-infobars");
-		options.addArguments("--print-to-pdf");
-		options.addArguments("--start-maximized");*/
+
 		chromeOptions.addArguments("--headless");
+		chromeOptions.addArguments("--disable-notifications");
 		driver = new ChromeDriver(chromeOptions);
 		Log.info("New driver instantiated");
 	    driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	    Log.info("Implicit wait applied on the driver for 10 seconds");
 	    String uatlink = Utils.configProp().getProperty("uatlink").toString();
-	 //  if(ParamEnv.contains("uat"))
-	   //System.out.println(uatlink);
 	    driver.get(uatlink);
 	    Log.info("Web application launched successfully");
 	    driver.manage().window().maximize();
