@@ -134,7 +134,7 @@ public class PageLogin extends BaseClass {
         }
 	 public static String pathToScreenshot;
 	 public static boolean DoLogin(int iTestCaseRow) throws Exception{
-	     	
+		  pathToScreenshot=Utils.takeScreenshot(driver);
 		 	
 		 	link_SignIn().click();
 		 

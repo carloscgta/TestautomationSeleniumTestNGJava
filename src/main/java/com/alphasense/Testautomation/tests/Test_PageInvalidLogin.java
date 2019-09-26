@@ -34,7 +34,8 @@ public class Test_PageInvalidLogin{
 			DOMConfigurator.configure("log4j.xml");
 		  	sTestCaseName = this.toString();
 			sTestCaseName = Utils.getTestCaseName(this.toString());
-			ExcelUtils.setExcelFile(Constant.Path_TestData + Constant.File_TestData, "Test_PageLogin");
+			String pathtoData= Utils.configProp().getProperty("Path_TestData").toString();
+			ExcelUtils.setExcelFile(pathtoData, "Test_PageLogin");
 			iTestCaseRow = ExcelUtils.getRowContains(sTestCaseName,Constant.Col_TestCaseName);
 			Log.startTestCase(sTestCaseName);
 			
@@ -64,7 +65,7 @@ public class Test_PageInvalidLogin{
 			
 	  }
 	  @AfterMethod
-	  public void afterMethod() throws DocumentException, IOException {
+	  public void afterMethod() throws Exception {
 		   Log.endTestCase(sTestCaseName);
 		   pdfgenerator.fechaPDF(result);
 		   driver.close();

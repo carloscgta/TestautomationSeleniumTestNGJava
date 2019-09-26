@@ -24,8 +24,8 @@ public class Test_PageMyAccountOrderShipClothes {
 	  @BeforeMethod
 	  public void beforeMethod() throws Exception {
 		  
-		  System.out.println(  Utils.configProp().getProperty("URL").toString());
-		  System.out.println(  Utils.configProp().getProperty("user").toString());
+		  System.out.println( Utils.configProp().getProperty("URL").toString());
+		  System.out.println( Utils.configProp().getProperty("user").toString());
 		  System.out.println(  Utils.configProp().getProperty("passwd").toString());
 		  System.out.println( "This test search Dresses and assert can result count"+Utils.configProp().getProperty("keyWordSearch").toString());
 		  DOMConfigurator.configure("log4j.xml");

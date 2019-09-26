@@ -35,13 +35,15 @@ public static WebDriver OpenBrowser(int iTestCaseRow) throws Exception{
 		options.addArguments("disable-infobars");
 		options.addArguments("--print-to-pdf");
 		options.addArguments("--start-maximized");*/
-				
+		chromeOptions.addArguments("--headless");
 		driver = new ChromeDriver(chromeOptions);
 		Log.info("New driver instantiated");
 	    driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	    Log.info("Implicit wait applied on the driver for 10 seconds");
-	    String url = System.getProperty("URL");
-	    driver.get(url);
+	    String uatlink = Utils.configProp().getProperty("uatlink").toString();
+	 //  if(ParamEnv.contains("uat"))
+	   //System.out.println(uatlink);
+	    driver.get(uatlink);
 	    Log.info("Web application launched successfully");
 	    driver.manage().window().maximize();
 		
@@ -69,8 +71,10 @@ public static String getTestCaseName(String sTestCase)throws Exception{
 			 try {
 				 
 			//	File f = new File("src");
-		 		prop.load(new FileReader("C://Users//carlos.almeida//Documents//GitHub//Testautomation//TestData//config.properties"));
-		 		
+				 ///src/main/resources/config.uat.properties
+		 		//prop.load(new FileReader("C://Users//carlos.almeida//Documents//GitHub//Testautomation//TestData//config.properties"));
+				 prop.load(new FileReader(".//src//main//resources//config.uat.properties"));
+				
 		 	} catch (IOException e) {
 		 		
 		 		throw new Exception();

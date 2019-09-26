@@ -16,7 +16,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.ProtocolHandshake.Result;
 
-
+import com.alphasense.Testautomation.pages.BaseClass;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.itextpdf.awt.geom.Rectangle;
@@ -49,8 +49,9 @@ public class PDFGenerator {
 		
 		document = new Document(PageSize.A4, 50, 50, 50, 50);
 		document.setPageSize(PageSize.A4);
-		new File("./evidences/").mkdirs();
-		PdfWriter.getInstance(document, new FileOutputStream((".//evidences//"+textTestCase+""+System.currentTimeMillis() +"alpha-sense-evidencia.pdf")));
+		new File("./report/").mkdirs();
+		String path= Utils.configProp().getProperty("Path_ScreenShot").toString();
+		PdfWriter.getInstance(document, new FileOutputStream((path+textTestCase+""+System.currentTimeMillis() +"alpha-sense-evidencia.pdf")));
 		//PdfWriter.getInstance(document, new FileOutputStream("//" + "Feature " + featureName + "//" + "evidencia.pdf"));
 		document.open();
 
@@ -127,7 +128,7 @@ public class PDFGenerator {
 /*
  * MEthod Responsible to close the pdf file
  */
-	public void fechaPDF(boolean bResult) throws DocumentException, IOException {
+	public void fechaPDF(boolean bResult) throws Exception {
 		if (bResult == false) {
 
 			document.newPage();
@@ -141,8 +142,8 @@ public class PDFGenerator {
 			document.add(new Paragraph("Status: " + "Failed", colorFailed));
 			document.add(new Paragraph("Evidência da falha: ", colorFailed));
 
-			
-			Image image = Image.getInstance(path);
+			String imagepath = Utils.takeScreenshot(BaseClass.driver);
+			Image image = Image.getInstance(imagepath);
 			float documentWidth = document.getPageSize().getWidth() - document.leftMargin() - document.rightMargin();
 			float documentHeight = document.getPageSize().getHeight() - document.topMargin() - document.bottomMargin();
 			image.scaleToFit(documentWidth, documentHeight);

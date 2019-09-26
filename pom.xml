@@ -13,7 +13,6 @@
 
         <profile>
             <id>dev</id>
-          
             <properties>
                 <env>dev</env>
             </properties>
@@ -27,7 +26,7 @@
         </profile>
 
         <profile>
-            <id>test</id>
+            <id>uat</id>
               <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
@@ -122,11 +121,20 @@
   </dependencies>
   
    <build>
+        <!-- Loading all ${} -->
+        <filters>
+            <filter>src/main/resources/config.${env}.properties</filter>
+        </filters>
+        
    <!-- map ${} environment urls -->
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
+                
+				<includes>
+                    <include>*.properties</include>
+                </includes>
             </resource>
         </resources>
         
@@ -136,15 +144,17 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-help-plugin</artifactId>
                 <version>3.1.0</version>
-                <executions>
+                	
+				<executions>
                     <execution>
                         <id>show-profiles</id>
-                        <phase>compile</phase>
+                        <phase>test</phase>
                         <goals>
                             <goal>active-profiles</goal>
                         </goals>
                     </execution>
                 </executions>
+   
             </plugin>
             
       <plugin>
@@ -180,7 +190,7 @@
           </systemPropertyVariables>
           
             <systemPropertyVariables>
-            <propertyName>url</propertyName>
+            <propertyName>uat</propertyName>
           </systemPropertyVariables>
           
             <systemPropertyVariables>

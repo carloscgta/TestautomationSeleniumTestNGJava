@@ -30,7 +30,9 @@ public class Test_PageLogin {
 	  @BeforeMethod
 	  public void beforeMethod() throws Exception {
 		  
-	
+		 // String ParamEnv = System.getProperty("uat").toString();
+		  String uatlink = Utils.configProp().getProperty("uatlink").toString();
+		  System.out.println(uatlink);
 				 
 		  DOMConfigurator.configure("log4j.xml");
 		  	sTestCaseName = this.toString();
@@ -67,7 +69,7 @@ public class Test_PageLogin {
 			
 	  }
 	  @AfterMethod
-	  public void afterMethod() throws DocumentException, IOException {
+	  public void afterMethod() throws Exception {
 		   Log.endTestCase(sTestCaseName);
 		   pdfgenerator.fechaPDF(result);
 		   driver.close();
