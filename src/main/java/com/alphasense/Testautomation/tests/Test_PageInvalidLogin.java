@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.alphasense.Testautomation.pages.BaseClass;
@@ -28,6 +29,7 @@ public class Test_PageInvalidLogin{
 	public static boolean result;
 
 	  @BeforeMethod
+	  @Parameters
 	  public void beforeMethod() throws Exception {
 			
 		  

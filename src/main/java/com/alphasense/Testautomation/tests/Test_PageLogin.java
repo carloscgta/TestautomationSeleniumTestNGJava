@@ -18,7 +18,7 @@ import com.alphasense.Testautomation.utility.PDFGenerator;
 import com.alphasense.Testautomation.utility.Utils;
 import com.itextpdf.text.DocumentException;
 
-@Test ()
+
 public class Test_PageLogin {
 
 	public WebDriver driver = null;
@@ -32,11 +32,11 @@ public class Test_PageLogin {
 	  @Parameters
 	  public void beforeMethod() throws Exception {
 		  
-		// String ParamEnv = System.getProperty("uat");
+		String ParamEnv = System.getProperty("uat").toString();
 		  String uatlink = Utils.configProp().getProperty("uatlink").toString();
-		/*  if(ParamEnv.contains("uat")) {
+		if(ParamEnv.contains("uat")) {
 			  System.out.println(uatlink);
-		  }*/
+		  }
 		  
 				 
 		  DOMConfigurator.configure("log4j.xml");

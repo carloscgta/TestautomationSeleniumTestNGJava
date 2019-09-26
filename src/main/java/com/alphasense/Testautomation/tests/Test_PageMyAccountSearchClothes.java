@@ -4,6 +4,7 @@ import org.apache.log4j.extras.DOMConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.alphasense.Testautomation.pages.BaseClass;
@@ -13,6 +14,7 @@ import com.alphasense.Testautomation.utility.Constant;
 import com.alphasense.Testautomation.utility.ExcelUtils;
 import com.alphasense.Testautomation.utility.Log;
 import com.alphasense.Testautomation.utility.Utils;
+import com.beust.jcommander.Parameter;
 
 public class Test_PageMyAccountSearchClothes {
 	
@@ -24,6 +26,7 @@ public class Test_PageMyAccountSearchClothes {
 	public boolean loginResult = false;
 	public boolean result = false;
 	  @BeforeMethod
+	  @Parameters
 	  public void beforeMethod() throws Exception {
 		 
 		  System.out.println( Utils.configProp().getProperty("uatlink").toString());
@@ -35,7 +38,8 @@ public class Test_PageMyAccountSearchClothes {
 		  DOMConfigurator.configure("log4j.xml");
 		  	sTestCaseName = this.toString();
 			sTestCaseName = Utils.getTestCaseName(this.toString());
-			ExcelUtils.setExcelFile(Constant.Path_TestData + Constant.File_TestData, "sheetSearchClothes");
+			String path= Utils.configProp().getProperty("Path_TestData").toString();
+			ExcelUtils.setExcelFile(path, "sheetSearchClothes");
 			iTestCaseRow = ExcelUtils.getRowContains(sTestCaseName,Constant.Col_TestCaseName);
 			Log.startTestCase(sTestCaseName);
 			

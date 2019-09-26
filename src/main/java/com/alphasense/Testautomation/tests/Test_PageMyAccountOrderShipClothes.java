@@ -4,6 +4,7 @@ import org.apache.log4j.extras.DOMConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.alphasense.Testautomation.pages.BaseClass;
@@ -22,6 +23,7 @@ public class Test_PageMyAccountOrderShipClothes {
 	public PageLogin pagelogin = new PageLogin(driver);
 
 	  @BeforeMethod
+	  @Parameters
 	  public void beforeMethod() throws Exception {
 		  
 		  System.out.println( Utils.configProp().getProperty("uatlink").toString());
@@ -32,7 +34,8 @@ public class Test_PageMyAccountOrderShipClothes {
 		  DOMConfigurator.configure("log4j.xml");
 		  	sTestCaseName = this.toString();
 			sTestCaseName = Utils.getTestCaseName(this.toString());
-			ExcelUtils.setExcelFile(Constant.Path_TestData + Constant.File_TestData, "sheetOrderShipClothes");
+			String path= Utils.configProp().getProperty("Path_TestData").toString();
+			ExcelUtils.setExcelFile(path, "sheetOrderShipClothes");
 			iTestCaseRow = ExcelUtils.getRowContains(sTestCaseName,Constant.Col_TestCaseName);
 			Log.startTestCase(sTestCaseName);
 			

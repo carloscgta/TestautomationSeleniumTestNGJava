@@ -180,7 +180,7 @@ public class PageLogin extends BaseClass {
 	         return bResult;
 	     }
  	 
-	 public static boolean LoginIntoMyStore(String user, String password) throws Exception{
+	 public boolean LoginIntoMyStore(String user, String password) throws Exception{
 	     	
 	     	
 		 	link_SignIn().click();

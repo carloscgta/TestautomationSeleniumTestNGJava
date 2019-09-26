@@ -115,6 +115,7 @@
   </dependencies>
   
    <build>
+  
         <!-- Loading all ${} -->
         <filters>
             <filter>src/main/resources/config.${env}.properties</filter>
