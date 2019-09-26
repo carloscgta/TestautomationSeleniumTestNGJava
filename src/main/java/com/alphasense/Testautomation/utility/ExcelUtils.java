@@ -51,7 +51,7 @@ public static void setCellData(String Result,  int RowNum, int ColNum) throws Ex
                 Cell.setCellValue(Result);
             }
 // Constant variables Test Data path and Test Data file name
-              FileOutputStream fileOut = new FileOutputStream(Constant.Path_TestData + Constant.File_TestData);
+              FileOutputStream fileOut = new FileOutputStream(Utils.configProp().getProperty("Path_TestData").toString());
               ExcelWBook.write(fileOut);
               fileOut.flush();
             fileOut.close();

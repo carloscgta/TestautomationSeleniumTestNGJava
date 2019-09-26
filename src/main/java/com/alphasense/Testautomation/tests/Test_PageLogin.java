@@ -1,4 +1,5 @@
 package com.alphasense.Testautomation.tests;
+import java.io.File;
 import java.io.IOException;
 
 import org.apache.log4j.extras.DOMConfigurator;
@@ -34,7 +35,8 @@ public class Test_PageLogin {
 		  DOMConfigurator.configure("log4j.xml");
 		  	sTestCaseName = this.toString();
 			sTestCaseName = Utils.getTestCaseName(this.toString());
-			ExcelUtils.setExcelFile(Utils.prop.getProperty("Path_TestData").toString() + Utils.prop.getProperty("File_TestData").toString(), "Test_PageLogin");
+			String pathtoData= Utils.configProp().getProperty("Path_TestData").toString();
+			ExcelUtils.setExcelFile(pathtoData, "Test_PageLogin");
 			iTestCaseRow = ExcelUtils.getRowContains(sTestCaseName,Constant.Col_TestCaseName);
 			Log.startTestCase(sTestCaseName);
 			

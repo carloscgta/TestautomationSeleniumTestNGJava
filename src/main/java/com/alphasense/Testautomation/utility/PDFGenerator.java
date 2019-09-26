@@ -16,7 +16,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.ProtocolHandshake.Result;
 
-import com.alphasense.Testautomation.pages.BaseClass;
+
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.itextpdf.awt.geom.Rectangle;
@@ -39,89 +39,7 @@ public class PDFGenerator {
 	private TestRunContext context;
 	public static Document document = new Document();
 	public static String path;
-
-	private Result result;
-
-	
-	public void geraPDF(String textTestCase, boolean brResult) {
-		try {
-
-			//File screenshot = ((TakesScreenshot) BaseClass.driver).getScreenshotAs(OutputType.FILE);
-			//FileUtils.copyFile(screenshot, new File("screenshot.png"));
-			Document document = new Document(PageSize.A4, 50, 50, 50, 50);
-			document.setPageSize(PageSize.A4);
-			//PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\carlos.almeida\\Documents\\SIGT\\Automation\\NewVentures\\Testautomation\\evidences\\alpha-sense-evidencia.pdf"));
-			PdfWriter.getInstance(document, new FileOutputStream(""+Utils.prop.getProperty("Path_ScreenShot").toString()+"\\alpha-sense-evidencia.pdf"));
-			
-			document.open();
-
-			Font f = new Font();
-			f.setFamily("Courier");
-			f.setStyle(Font.BOLD);
-			f.setSize(30);
-
-			Font font = new Font();
-			font.setFamily("Courier");
-			font.setStyle(Font.BOLD);
-			font.setSize(25);
-
-			Image logo = Image.getInstance("./font/brandmark.png");
-			logo.scalePercent(10);
-			document.add(logo);
-
-			String textContent = textTestCase;
-			
-			document.add(new Paragraph(textContent, f));
-
-			//document.add(new Paragraph("Cenário: " + scenario.getName(), f));
-			//document.add(new Paragraph("Testautomation"));
-			DateTimeFormatter dia = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-			LocalDateTime today = LocalDateTime.now();
-			String data = dia.format(today).toString();
-			document.add(new Paragraph("Data: " + data, font));
-
-			DateTimeFormatter hora = DateTimeFormatter.ofPattern("HH:mm:ss");
-			LocalDateTime agora = LocalDateTime.now();
-			String horario = hora.format(agora).toString();
-			document.add(new Paragraph("Horário: " + horario + " hs", font));
-			
-
-			if (brResult == true) {
-				Font color = new Font();
-				color.setFamily("Courier");
-				color.setStyle(Font.BOLD);
-				color.setSize(25);
-				color.setColor(BaseColor.GREEN);
-				document.add(new Paragraph("Status: Passed ", color));
-			} else {
-				
-				Font color = new Font();
-				color.setFamily("Courier");
-				color.setColor(BaseColor.RED);
-				color.setStyle(Font.BOLD);
-				color.setSize(25);
-				document.add(new Paragraph("Status: Failed" , color));
-			}
-
-			// document.add(new Paragraph("Step: " + Thread.currentThread().getStackTrace(),
-			// f));
-
-			Image image = Image.getInstance("screenshot.jpg");
-			float documentWidth = document.getPageSize().getWidth() - document.leftMargin() - document.rightMargin();
-			float documentHeight = document.getPageSize().getHeight() - document.topMargin() - document.bottomMargin();
-			image.scaleToFit(documentWidth, documentHeight);
-			image.setBorder(Rectangle.OUT_BOTTOM);
-			image.setBorderColor(BaseColor.BLACK);
-			image.setBorderWidth(1f);
-			document.add(image);
-
-			document.close();
-		} catch (Exception e2) {
-			// TODO Auto-generated catch block
-			e2.printStackTrace();
-		}
-
-	}
+		
 
 	/*
 	 * Method responsible to start the pdf file
@@ -132,7 +50,7 @@ public class PDFGenerator {
 		document = new Document(PageSize.A4, 50, 50, 50, 50);
 		document.setPageSize(PageSize.A4);
 		new File("./evidences/").mkdirs();
-		PdfWriter.getInstance(document, new FileOutputStream(("//evidences//"+textTestCase+""+System.currentTimeMillis() +"alpha-sense-evidencia.pdf")));
+		PdfWriter.getInstance(document, new FileOutputStream((".//evidences//"+textTestCase+""+System.currentTimeMillis() +"alpha-sense-evidencia.pdf")));
 		//PdfWriter.getInstance(document, new FileOutputStream("//" + "Feature " + featureName + "//" + "evidencia.pdf"));
 		document.open();
 
@@ -146,8 +64,9 @@ public class PDFGenerator {
 		font.setStyle(Font.BOLD);
 		font.setSize(20);
 		
-		//Image logo = Image.getInstance("C:\\Users\\carlos.almeida\\Documents\\SIGT\\Automation\\NewVentures\\Testautomation\\font\\brandmark.png");
-		Image logo = Image.getInstance(Utils.prop.getProperty("brandmark").toString());
+		
+		Image logo = Image.getInstance(Utils.configProp().getProperty("brandmark").toString());
+		//Image logo = Image.getInstance(Utils.prop.getProperty("brandmark").toString());
 		logo.scalePercent(10);
 		document.add(logo);
 
@@ -168,7 +87,7 @@ public class PDFGenerator {
 		String nameOS = "os.name";
 		document.add(new Paragraph("Sistema operacional: " + System.getProperty(nameOS), font));
 
-		document.add(new Paragraph("Browser: " + " MEthod that get the browser name", font));
+		document.add(new Paragraph("Browser:" + " MEthod that get the browser name", font));
 
 		document.add(Chunk.NEWLINE);
 
@@ -189,10 +108,11 @@ public class PDFGenerator {
 
 		document.add(new Paragraph(conteudoTestCaseTexts, color));
 
-		//File screenshot = ((TakesScreenshot) BaseClass.driver).getScreenshotAs(OutputType.FILE);
-	//	FileUtils.copyFile(screenshot, new File("screenshot.png"));
+
 
 		Image image = Image.getInstance(evidenceStringPath);
+		 path = evidenceStringPath;
+		
 		float documentWidth = document.getPageSize().getWidth() - document.leftMargin() - document.rightMargin();
 		float documentHeight = document.getPageSize().getHeight() - document.topMargin() - document.bottomMargin();
 		image.setBorder(Rectangle.OUT_BOTTOM);
@@ -220,19 +140,16 @@ public class PDFGenerator {
 
 			document.add(new Paragraph("Status: " + "Failed", colorFailed));
 			document.add(new Paragraph("Evidência da falha: ", colorFailed));
+
 			
-			
-			//File screenshot = ((TakesScreenshot)BaseClass.driver).getScreenshotAs(OutputType.FILE);
-			//FileUtils.copyFile(screenshot, new File("screenshot.jpg"));
-			
-			//Image image = Image.getInstance(evidenceStringPath);
-			//float documentWidth = document.getPageSize().getWidth() - document.leftMargin() - document.rightMargin();
-			//float documentHeight = document.getPageSize().getHeight() - document.topMargin() - document.bottomMargin();
-			//image.scaleToFit(documentWidth, documentHeight);
-			//image.setBorder(Rectangle.OUT_BOTTOM);
-			//image.setBorderColor(BaseColor.BLACK);
-			//image.setBorderWidth(1f);
-			//document.add(image);
+			Image image = Image.getInstance(path);
+			float documentWidth = document.getPageSize().getWidth() - document.leftMargin() - document.rightMargin();
+			float documentHeight = document.getPageSize().getHeight() - document.topMargin() - document.bottomMargin();
+			image.scaleToFit(documentWidth, documentHeight);
+			image.setBorder(Rectangle.OUT_BOTTOM);
+			image.setBorderColor(BaseColor.BLACK);
+			image.setBorderWidth(1f);
+			document.add(image);
 			document.close();
 		} else {
 			Font colorPassed = new Font();

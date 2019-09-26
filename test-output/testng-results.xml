@@ -1,107 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="1" failed="0" ignored="0" total="1" passed="0">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="652" started-at="2019-09-25T15:47:45Z" finished-at="2019-09-25T15:47:45Z">
+  <suite name="Default suite" duration-ms="218264" started-at="2019-09-25T21:45:37Z" finished-at="2019-09-25T21:49:16Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="652" started-at="2019-09-25T15:47:45Z" finished-at="2019-09-25T15:47:45Z">
+    <test name="Default test" duration-ms="218264" started-at="2019-09-25T21:45:37Z" finished-at="2019-09-25T21:49:16Z">
       <class name="com.alphasense.Testautomation.tests.Test_PageLogin">
-        <test-method status="FAIL" signature="beforeMethod()[pri:0, instance:com.alphasense.Testautomation.tests.Test_PageLogin@68bbe345]" name="beforeMethod" is-config="true" duration-ms="389" started-at="2019-09-25T15:47:45Z" finished-at="2019-09-25T15:47:45Z">
-          <exception class="java.io.FileNotFoundException">
-            <message>
-              <![CDATA[C:\Users\carlos.almeida\Documents\SIGT\Automation\NewVentures\Testautomation\TestData\testData.xlsx (O sistema não conseguiu localizar o caminho especificado)]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.io.FileNotFoundException: C:\Users\carlos.almeida\Documents\SIGT\Automation\NewVentures\Testautomation\TestData\testData.xlsx (O sistema não conseguiu localizar o caminho especificado)
-at java.io.FileInputStream.open0(Native Method)
-at java.io.FileInputStream.open(Unknown Source)
-at java.io.FileInputStream.<init>(Unknown Source)
-at java.io.FileInputStream.<init>(Unknown Source)
-at com.alphasense.Testautomation.utility.ExcelUtils.setExcelFile(ExcelUtils.java:22)
-at com.alphasense.Testautomation.tests.Test_PageLogin.beforeMethod(Test_PageLogin.java:36)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-at java.lang.reflect.Method.invoke(Unknown Source)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
-at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:59)
-at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:458)
-at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:222)
-at org.testng.internal.Invoker.invokeMethod(Invoker.java:523)
-at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
-at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
-at org.testng.TestRunner.privateRun(TestRunner.java:648)
-at org.testng.TestRunner.run(TestRunner.java:505)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-at org.testng.TestNG.runSuites(TestNG.java:1049)
-at org.testng.TestNG.run(TestNG.java:1017)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.io.FileNotFoundException -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.alphasense.Testautomation.tests.Test_PageLogin@68bbe345]" name="beforeMethod" is-config="true" duration-ms="58368" started-at="2019-09-25T21:45:38Z" finished-at="2019-09-25T21:46:36Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="SKIP" signature="TestMethod()[pri:0, instance:com.alphasense.Testautomation.tests.Test_PageLogin@68bbe345]" name="TestMethod" duration-ms="0" started-at="2019-09-25T15:47:45Z" finished-at="2019-09-25T15:47:45Z">
-          <exception class="java.io.FileNotFoundException">
-            <message>
-              <![CDATA[C:\Users\carlos.almeida\Documents\SIGT\Automation\NewVentures\Testautomation\TestData\testData.xlsx (O sistema não conseguiu localizar o caminho especificado)]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.io.FileNotFoundException: C:\Users\carlos.almeida\Documents\SIGT\Automation\NewVentures\Testautomation\TestData\testData.xlsx (O sistema não conseguiu localizar o caminho especificado)
-at java.io.FileInputStream.open0(Native Method)
-at java.io.FileInputStream.open(Unknown Source)
-at java.io.FileInputStream.<init>(Unknown Source)
-at java.io.FileInputStream.<init>(Unknown Source)
-at com.alphasense.Testautomation.utility.ExcelUtils.setExcelFile(ExcelUtils.java:22)
-at com.alphasense.Testautomation.tests.Test_PageLogin.beforeMethod(Test_PageLogin.java:36)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-at java.lang.reflect.Method.invoke(Unknown Source)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
-at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:59)
-at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:458)
-at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:222)
-at org.testng.internal.Invoker.invokeMethod(Invoker.java:523)
-at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
-at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
-at org.testng.TestRunner.privateRun(TestRunner.java:648)
-at org.testng.TestRunner.run(TestRunner.java:505)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-at org.testng.TestNG.runSuites(TestNG.java:1049)
-at org.testng.TestNG.run(TestNG.java:1017)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.io.FileNotFoundException -->
+        <test-method status="PASS" signature="TestMethod()[pri:0, instance:com.alphasense.Testautomation.tests.Test_PageLogin@68bbe345]" name="TestMethod" duration-ms="158954" started-at="2019-09-25T21:46:36Z" finished-at="2019-09-25T21:49:15Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TestMethod -->
-        <test-method status="SKIP" signature="afterMethod()[pri:0, instance:com.alphasense.Testautomation.tests.Test_PageLogin@68bbe345]" name="afterMethod" is-config="true" duration-ms="0" started-at="2019-09-25T15:47:45Z" finished-at="2019-09-25T15:47:45Z">
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.alphasense.Testautomation.tests.Test_PageLogin@68bbe345]" name="afterMethod" is-config="true" duration-ms="744" started-at="2019-09-25T21:49:15Z" finished-at="2019-09-25T21:49:16Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->

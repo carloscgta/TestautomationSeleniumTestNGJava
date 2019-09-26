@@ -40,7 +40,8 @@ public static WebDriver OpenBrowser(int iTestCaseRow) throws Exception{
 		Log.info("New driver instantiated");
 	    driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	    Log.info("Implicit wait applied on the driver for 10 seconds");
-	    driver.get(Constant.URL);
+	    String url = System.getProperty("URL");
+	    driver.get(url);
 	    Log.info("Web application launched successfully");
 	    driver.manage().window().maximize();
 		
@@ -67,8 +68,8 @@ public static String getTestCaseName(String sTestCase)throws Exception{
 		 public static Properties configProp() throws Exception {
 			 try {
 				 
-				File f = new File("src");
-		 		prop.load(new FileReader(f.getAbsolutePath().toString()+"\\TestData\\config.properties"));
+			//	File f = new File("src");
+		 		prop.load(new FileReader("C://Users//carlos.almeida//Documents//GitHub//Testautomation//TestData//config.properties"));
 		 		
 		 	} catch (IOException e) {
 		 		
