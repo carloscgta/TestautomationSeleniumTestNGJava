@@ -68,7 +68,7 @@ pipeline {
 			sh (script: "cp ./Testautomation/test-output/emailable-report.html ./src/main/report/; ls -l ./src/main/report/")
             sh (script: "tar -czvf report.tar.gz ./src/main/report/ ./src/main/report/; ls -l ./src/main/report/")
             
-             archiveArtifacts artifacts: 'emailable-report.tar.gz', fingerprint: true 
+             archiveArtifacts artifacts: 'report.tar.gz', fingerprint: true 
              cleanWs();
       		
           }
@@ -84,7 +84,7 @@ pipeline {
             
             sh (script: "cp ./Testautomation/test-output/emailable-report.html ./src/main/report/; ls -l ./src/main/report/")
             sh (script: "tar -czvf report.tar.gz ./src/main/report/ ./src/main/report/; ls -l ./src/main/report/")
-             archiveArtifacts artifacts: 'emailable-report.tar.gz', fingerprint: true 
+             archiveArtifacts artifacts: 'report.tar.gz', fingerprint: true 
   		
           }
        	 
@@ -94,7 +94,7 @@ pipeline {
               
        	            
             script {
-                slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#qa-chat-alpha-sense - Chat name', color: 'good', message: 'Automated Tests Run - Check Build Artifcats for Evidence', teamDomain: 'alpha-sense', token: 'TokenPasteHere'
+                slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#qa-chat-alpha-sense - Chat name', color: 'good', message: 'Automated Tests Run - Check Build Artifcats for Evidence', teamDomain: 'alpha-sense', token: 'Paste Token Here'
           }
        	 
        	 }
