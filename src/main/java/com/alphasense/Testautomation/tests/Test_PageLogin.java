@@ -6,6 +6,7 @@ import org.apache.log4j.extras.DOMConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.alphasense.Testautomation.pages.BaseClass;
@@ -28,11 +29,15 @@ public class Test_PageLogin {
 	PDFGenerator pdfgenerator = new PDFGenerator();
 
 	  @BeforeMethod
+	  @Parameters
 	  public void beforeMethod() throws Exception {
 		  
-		 // String ParamEnv = System.getProperty("uat").toString();
+		// String ParamEnv = System.getProperty("uat");
 		  String uatlink = Utils.configProp().getProperty("uatlink").toString();
-		  System.out.println(uatlink);
+		/*  if(ParamEnv.contains("uat")) {
+			  System.out.println(uatlink);
+		  }*/
+		  
 				 
 		  DOMConfigurator.configure("log4j.xml");
 		  	sTestCaseName = this.toString();
