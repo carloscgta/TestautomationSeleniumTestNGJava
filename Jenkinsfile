@@ -17,7 +17,7 @@ pipeline {
       stage('Copy chromedriver to the project folder') {
       steps {
                
-          echo "- copy chromedriver de /usr/local/bin to  path  ./Testautomation/drivers "
+          echo "- copy chromedriver de /usr/local/bin to  path  ./src/main/drivers/ "
        
          
             script {
