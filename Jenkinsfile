@@ -16,14 +16,13 @@ pipeline {
 
       stage('Copy chromedriver to the project folder') {
       steps {
-        
-       
+               
           echo "- copy chromedriver de /usr/local/bin to  path  ./Testautomation/drivers "
        
          
             script {
           
-             sh (script: "mkdir -p ./Testautomation/drivers; cp /usr/local/bin/chromedriver ./Testautomation/drivers; mkdir ./Testautomation/drivers ")
+             sh (script: " cp /usr/local/bin/chromedriver /src/main/drivers/; ls -l /src/main/drivers/")
              
             
         }
@@ -34,7 +33,7 @@ pipeline {
     stage('Executing automated regression tests') {
       steps {
        
-          echo "Running the Selenium Tests
+          echo "Running the Selenium Tests"
           script {
     sh (script: "mvn clean install")
             
@@ -64,9 +63,10 @@ pipeline {
            always {
           		echo 'Publish Evidences-Reports on Jenkins'
               
-            script {
-
-            sh (script: "tar -czvf emailable-report.tar.gz ./Testautomation/test-output/emailable-report.html ./Testautomation/evidences; ls -l ./Testautomation/evidences")
+            script {																								
+			
+			sh (script: "cp ./Testautomation/test-output/emailable-report.html ./src/main/report/; ls -l ./src/main/report/")
+            sh (script: "tar -czvf report.tar.gz ./src/main/report/ ./src/main/report/; ls -l ./src/main/report/")
             
              archiveArtifacts artifacts: 'emailable-report.tar.gz', fingerprint: true 
              cleanWs();
@@ -80,8 +80,10 @@ pipeline {
          
            script {
             
-            sh (script: "tar -czvf emailable-report.tar.gz ./Testautomation/test-output/emailable-report.html ./Testautomation/evidences; ls -l ./Testautomation/evidences")
+           // sh (script: "tar -czvf emailable-report.tar.gz ./Testautomation/test-output/emailable-report.html ./Testautomation/evidences; ls -l ./Testautomation/evidences")
             
+            sh (script: "cp ./Testautomation/test-output/emailable-report.html ./src/main/report/; ls -l ./src/main/report/")
+            sh (script: "tar -czvf report.tar.gz ./src/main/report/ ./src/main/report/; ls -l ./src/main/report/")
              archiveArtifacts artifacts: 'emailable-report.tar.gz', fingerprint: true 
   		
           }
