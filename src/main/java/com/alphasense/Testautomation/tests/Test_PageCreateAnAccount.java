@@ -29,7 +29,13 @@ public class Test_PageCreateAnAccount{
 	  @BeforeMethod
 	  public void beforeMethod() throws Exception {
 		  
-		  DOMConfigurator.configure("log4j.xml");
+		  System.out.println( Utils.configProp().getProperty("uatlink").toString());
+		  System.out.println( Utils.configProp().getProperty("user").toString());
+		  System.out.println(  Utils.configProp().getProperty("passwd").toString());
+		  System.out.println( "This test search Dresses and assert can result count"+Utils.configProp().getProperty("keyWordSearch").toString());
+		  System.out.println( "The test report can be found in:"+Utils.configProp().getProperty("Path_ScreenShot").toString());
+		  
+		  	DOMConfigurator.configure("log4j.xml");
 		  	sTestCaseName = this.toString();
 			sTestCaseName = Utils.getTestCaseName(this.toString());
 			String pathtoData= Utils.configProp().getProperty("Path_TestData").toString();

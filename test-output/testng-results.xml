@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="226064" started-at="2019-09-27T14:37:16Z" finished-at="2019-09-27T14:41:02Z">
+  <suite name="Default suite" duration-ms="185205" started-at="2019-09-27T16:35:16Z" finished-at="2019-09-27T16:38:21Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="226064" started-at="2019-09-27T14:37:16Z" finished-at="2019-09-27T14:41:02Z">
-      <class name="com.alphasense.Testautomation.tests.Test_PageLogin">
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.alphasense.Testautomation.tests.Test_PageLogin@30b8a058]" name="beforeMethod" is-config="true" duration-ms="40246" started-at="2019-09-27T14:37:16Z" finished-at="2019-09-27T14:37:56Z">
+    <test name="Default test" duration-ms="185205" started-at="2019-09-27T16:35:16Z" finished-at="2019-09-27T16:38:21Z">
+      <class name="com.alphasense.Testautomation.tests.Test_PageInvalidLogin">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.alphasense.Testautomation.tests.Test_PageInvalidLogin@30b8a058]" name="beforeMethod" is-config="true" duration-ms="49592" started-at="2019-09-27T16:35:16Z" finished-at="2019-09-27T16:36:06Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="TestMethod()[pri:0, instance:com.alphasense.Testautomation.tests.Test_PageLogin@30b8a058]" name="TestMethod" duration-ms="184634" started-at="2019-09-27T14:37:56Z" finished-at="2019-09-27T14:41:01Z">
+        <test-method status="PASS" signature="TestMethod()[pri:0, instance:com.alphasense.Testautomation.tests.Test_PageInvalidLogin@30b8a058]" name="TestMethod" duration-ms="80437" started-at="2019-09-27T16:36:06Z" finished-at="2019-09-27T16:37:26Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TestMethod -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.alphasense.Testautomation.tests.Test_PageLogin@30b8a058]" name="afterMethod" is-config="true" duration-ms="1013" started-at="2019-09-27T14:41:01Z" finished-at="2019-09-27T14:41:02Z">
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.alphasense.Testautomation.tests.Test_PageInvalidLogin@30b8a058]" name="afterMethod" is-config="true" duration-ms="55080" started-at="2019-09-27T16:37:26Z" finished-at="2019-09-27T16:38:21Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-      </class> <!-- com.alphasense.Testautomation.tests.Test_PageLogin -->
+      </class> <!-- com.alphasense.Testautomation.tests.Test_PageInvalidLogin -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

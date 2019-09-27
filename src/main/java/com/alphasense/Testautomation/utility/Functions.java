@@ -1,12 +1,16 @@
 package com.alphasense.Testautomation.utility;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Random;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.alphasense.Testautomation.pages.BaseClass;
 
@@ -46,6 +50,14 @@ public class Functions  {
         //actions.moveToElement(element);
 
     }
+    
+	/*public static String getBrowserName() throws IOException {
+    	Capabilities cap = ((RemoteWebDriver) BaseClass.driver).getCapabilities();
+	    String browserName = cap.getBrowserName().toLowerCase();
+	  //  System.out.println(browserName);
+    	return browserName;
+    				
+	}*/
     
     /* Get the latest file from from Download Folder*/
 	public static File getLatestFileFromDownload(String dirPath){

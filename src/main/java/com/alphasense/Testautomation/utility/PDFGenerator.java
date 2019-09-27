@@ -3,6 +3,8 @@ package com.alphasense.Testautomation.utility;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -51,7 +53,7 @@ public class PDFGenerator {
 		document.setPageSize(PageSize.A4);
 		new File("./report/").mkdirs();
 		String path= Utils.configProp().getProperty("Path_ScreenShot").toString();
-		PdfWriter.getInstance(document, new FileOutputStream((path+textTestCase+""+System.currentTimeMillis() +"alpha-sense-evidencia.pdf")));
+		PdfWriter.getInstance(document, new FileOutputStream((path+textTestCase+"_"+System.currentTimeMillis() +"_alpha-sense-evidencia.pdf")));
 		
 		document.open();
 
@@ -74,20 +76,20 @@ public class PDFGenerator {
 
 		document.add(new Paragraph("Environment Information " , font));
 
-		DateTimeFormatter dia = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		DateTimeFormatter day = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		LocalDateTime today = LocalDateTime.now();
-		String data = dia.format(today).toString();
-		document.add(new Paragraph("Data: " + data, font));
+		String data = day.format(today).toString();
+		document.add(new Paragraph("Date: " + data, font));
 
-		DateTimeFormatter hora = DateTimeFormatter.ofPattern("HH:mm:ss");
-		LocalDateTime agora = LocalDateTime.now();
-		String horario = hora.format(agora).toString();
-		document.add(new Paragraph("Horário: " + horario + " hs", font));
+		DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm:ss");
+		LocalDateTime now = LocalDateTime.now();
+		String horario = time.format(now).toString();
+		document.add(new Paragraph("Time: " + horario + " hs", font));
 
 		String nameOS = "os.name";
-		document.add(new Paragraph("Sistema operacional: " + System.getProperty(nameOS), font));
+		document.add(new Paragraph("OS: " + System.getProperty(nameOS), font));
 
-		document.add(new Paragraph("Browser:" + " MEthod that get the browser name", font));
+		document.add(new Paragraph("Browser:" , font));
 
 		document.add(Chunk.NEWLINE);
 
@@ -139,6 +141,7 @@ public class PDFGenerator {
 			document.add(new Paragraph("Evidência da falha: ", colorFailed));
 
 			String imagepath = Utils.takeScreenshot(BaseClass.driver);
+			
 			Image image = Image.getInstance(imagepath);
 			float documentWidth = document.getPageSize().getWidth() - document.leftMargin() - document.rightMargin();
 			float documentHeight = document.getPageSize().getHeight() - document.topMargin() - document.bottomMargin();
@@ -147,6 +150,7 @@ public class PDFGenerator {
 			image.setBorderColor(BaseColor.BLACK);
 			image.setBorderWidth(1f);
 			document.add(image);
+			 Files.deleteIfExists(Paths.get(imagepath));
 			document.close();
 		} else {
 			Font colorPassed = new Font();

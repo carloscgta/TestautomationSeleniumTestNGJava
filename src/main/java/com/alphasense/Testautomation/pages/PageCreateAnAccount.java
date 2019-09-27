@@ -1,5 +1,8 @@
 package com.alphasense.Testautomation.pages;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,6 +20,7 @@ import com.alphasense.Testautomation.utility.Utils;
 public class PageCreateAnAccount extends BaseClass {
 
 	private static WebElement element = null;
+	static WebDriver driver;
 	public static PDFGenerator pdfgenerator = new PDFGenerator();
 	public String pathToScreenshot;
 	public static boolean result;
@@ -411,9 +415,25 @@ public class PageCreateAnAccount extends BaseClass {
 		
 	     
 		 if(button_LoginIn().isDisplayed()) {
-			 pathToScreenshot=Utils.takeScreenshot(driver);
+			// pathToScreenshot=Utils.takeScreenshot(driver);
 		     pdfgenerator.PDFcontent("Click on Sigin Link", pathToScreenshot);
+		     Files.deleteIfExists(Paths.get(pathToScreenshot));
+		 	Thread.sleep(2000L);
+	         Thread.sleep(2000L);
+	         Thread.sleep(2000L);
+	         Thread.sleep(2000L);
+	         Thread.sleep(2000L);
+	         Thread.sleep(2000L);
+	         driver.navigate().refresh();
+	         
 			 PageCreateAnAccount.button_LoginIn().click();
+			  		Thread.sleep(2000L);
+		         Thread.sleep(2000L);
+		         Thread.sleep(2000L);
+		         Thread.sleep(2000L);
+		         Thread.sleep(2000L);
+		         Thread.sleep(2000L);
+		         driver.navigate().refresh();
 		 }
 		 if(input_emailCreate().isDisplayed()) {
 			 PageCreateAnAccount.input_emailCreate().sendKeys(Functions.randomAlphaEmail());
@@ -424,6 +444,7 @@ public class PageCreateAnAccount extends BaseClass {
 		 if( button_createAccount().isDisplayed()) {
 			 pathToScreenshot=Utils.takeScreenshot(driver);
 		     pdfgenerator.PDFcontent("Filling the account required information", pathToScreenshot);
+		     Files.deleteIfExists(Paths.get(pathToScreenshot));
 			 PageCreateAnAccount.button_createAccount().click();
 		 }
 		  
@@ -439,6 +460,7 @@ public class PageCreateAnAccount extends BaseClass {
 			 PageCreateAnAccount.input_Lastname().sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.Col_LastName).toString());
 			 pathToScreenshot=Utils.takeScreenshot(driver);
 		     pdfgenerator.PDFcontent("Filling the account required information", pathToScreenshot);
+		     Files.deleteIfExists(Paths.get(pathToScreenshot));
 		 }
 		 
 		 
@@ -454,6 +476,7 @@ public class PageCreateAnAccount extends BaseClass {
 		
 		pathToScreenshot=Utils.takeScreenshot(driver);
 	     pdfgenerator.PDFcontent("Filling the account required information", pathToScreenshot);
+	     Files.deleteIfExists(Paths.get(pathToScreenshot));
 		PageCreateAnAccount.input_AddressForm_FirstName().sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.Col_AddressFirstName).toString());
 		PageCreateAnAccount.input_AddressForm_LastName().sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.Col_AddressLastName).toString());
 		PageCreateAnAccount.input_AddressForm_CompanyName().sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.Col_Expected).toString());    
@@ -461,6 +484,7 @@ public class PageCreateAnAccount extends BaseClass {
 		PageCreateAnAccount.input_AddressForm_Address01().sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.Col_AddressLine2).toString());
 		pathToScreenshot=Utils.takeScreenshot(driver);
 	     pdfgenerator.PDFcontent("Filling the account required information", pathToScreenshot);
+	     Files.deleteIfExists(Paths.get(pathToScreenshot));
 		
 		PageCreateAnAccount.input_AddressForm_City().sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.Col_City).toString());
 		select_AddressForm_state("2");
@@ -472,13 +496,15 @@ public class PageCreateAnAccount extends BaseClass {
 		PageCreateAnAccount.input_AddressForm_AdditionaInfor().sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.Col_AditionalInfo).toString());
 		pathToScreenshot=Utils.takeScreenshot(driver);
 	    pdfgenerator.PDFcontent("Filling the account required information", pathToScreenshot);
+	    Files.deleteIfExists(Paths.get(pathToScreenshot));
 	     
 	    
 		PageCreateAnAccount.input_Mobilephone().sendKeys("123456789");
 		
 		PageCreateAnAccount.input_AliasAddress().sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.Col_AddressAlias).toString());
 		pathToScreenshot=Utils.takeScreenshot(driver);
-	     pdfgenerator.PDFcontent("Filling the account required information", pathToScreenshot);
+	    pdfgenerator.PDFcontent("Filling the account required information", pathToScreenshot);
+	    Files.deleteIfExists(Paths.get(pathToScreenshot));
 	     
 		PageCreateAnAccount.button_Register().click();
 	         
@@ -486,6 +512,7 @@ public class PageCreateAnAccount extends BaseClass {
 	        	 result = true;
 	        	 pathToScreenshot=Utils.takeScreenshot(driver);
 	    	     pdfgenerator.PDFcontent("Click on button_createAccount", pathToScreenshot);
+	    	     Files.deleteIfExists(Paths.get(pathToScreenshot));
 	         }else {
 	        	 result = false;
 	         }

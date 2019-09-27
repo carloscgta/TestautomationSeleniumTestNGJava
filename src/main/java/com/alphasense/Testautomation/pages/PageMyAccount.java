@@ -18,6 +18,7 @@ import com.alphasense.Testautomation.utility.Utils;
 
 public class PageMyAccount extends BaseClass{
 	private static WebElement element = null;
+	WebDriver driver;
 	PDFGenerator pdfgenerator = new PDFGenerator();
 	public String pathToScreenshot;
 	
@@ -451,6 +452,7 @@ public class PageMyAccount extends BaseClass{
 		
 		pathToScreenshot=Utils.takeScreenshot(driver);
 	     pdfgenerator.PDFcontent("View the search result for 'Dress' keyword - and clicking in Add to Chart button", pathToScreenshot);
+	     
 		Thread.sleep(2000L);
 		
 		ClickONbutton_addToChart();

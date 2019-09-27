@@ -31,7 +31,11 @@ public class Test_PageInvalidLogin{
 	  @BeforeMethod
 	  @Parameters
 	  public void beforeMethod() throws Exception {
-			
+		  System.out.println( Utils.configProp().getProperty("uatlink").toString());
+		  System.out.println( Utils.configProp().getProperty("user").toString());
+		  System.out.println(  Utils.configProp().getProperty("passwd").toString());
+		  System.out.println( "This test search for Dresses and assert result count"+Utils.configProp().getProperty("keyWordSearch").toString());
+		  System.out.println( "The test report can be found in:"+Utils.configProp().getProperty("Path_ScreenShot").toString());
 		  
 			DOMConfigurator.configure("log4j.xml");
 		  	sTestCaseName = this.toString();
@@ -52,8 +56,7 @@ public class Test_PageInvalidLogin{
 		  try{
 			  
 			 result=PageLogin.InvalidLoginIntoMyStore(Utils.configProp().getProperty("user").toString(), Utils.configProp().getProperty("invalidPass").toString());
-			  
-		
+			 
 			 Assert.assertFalse(result, "Login shouldn't be successful, but actually was");
 			if(result == false) {
 				  ExcelUtils.setCellData("Passed",iTestCaseRow, Constant.Col_Result);  
