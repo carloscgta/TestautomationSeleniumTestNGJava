@@ -15,6 +15,7 @@
             <id>dev</id>
             <properties>
                 <env>dev</env>
+                <env.url/>
             </properties>
         </profile>
 
@@ -22,6 +23,7 @@
             <id>prod</id>
             <properties>
                 <env>prod</env>
+                <env.url/>
             </properties>
         </profile>
 
@@ -31,7 +33,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <env>uat</env>
+                <env.url>http://www.automationpractice.com/index.php</env.url>
             </properties>
         </profile>
 
@@ -116,10 +118,10 @@
   
    <build>
   
-        <!-- Loading all ${} -->
+        <!-- Loading all ${} 
         <filters>
             <filter>src/main/resources/config.${env}.properties</filter>
-        </filters>
+        </filters>-->
         
    <!-- map ${} environment urls -->
         <resources>
@@ -172,29 +174,12 @@
           <suiteXmlFiles>
             <suiteXmlFile>testng.xml</suiteXmlFile>
           </suiteXmlFiles>
-          <systemPropertyVariables>
-            <propertyName>chrome</propertyName>
-          </systemPropertyVariables>
-         
-           <systemPropertyVariables>
-            <propertyName>firefox</propertyName>
-          </systemPropertyVariables>
-          
+                   
             <systemPropertyVariables>
-            <propertyName>safari</propertyName>
-          </systemPropertyVariables>
-          
-            <systemPropertyVariables>
-            <propertyName>uat</propertyName>
+            <env.url>${env.url}</env.url>
             
           </systemPropertyVariables>
           
-            <systemPropertyVariables>
-            <propertyName>user</propertyName>
-          </systemPropertyVariables>
-           <systemPropertyVariables>
-            <propertyName>passwd</propertyName>
-          </systemPropertyVariables>
         </configuration>
       </plugin>
      	</plugins>

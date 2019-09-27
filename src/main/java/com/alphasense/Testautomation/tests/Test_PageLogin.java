@@ -38,6 +38,7 @@ public class Test_PageLogin {
 		if(ParamEnv.contains("uat")) {
 			  System.out.println(uatlink);
 		  }*/
+		  
 		  System.out.println( Utils.configProp().getProperty("uatlink").toString());
 		  System.out.println( Utils.configProp().getProperty("user").toString());
 		  System.out.println(  Utils.configProp().getProperty("passwd").toString());

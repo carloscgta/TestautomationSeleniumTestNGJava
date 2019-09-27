@@ -37,7 +37,9 @@ public static WebDriver OpenBrowser(int iTestCaseRow) throws Exception{
 	    driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	    Log.info("Implicit wait applied on the driver for 10 seconds");
 	    String uatlink = Utils.configProp().getProperty("uatlink").toString();
-	    driver.get(uatlink);
+	    String url = System.getProperty("env.url").toString();
+	    System.out.println(url);
+	    driver.get(url);
 	    Log.info("Web application launched successfully");
 	    driver.manage().window().maximize();
 		
@@ -82,8 +84,7 @@ public static String getTestCaseName(String sTestCase)throws Exception{
 					File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 					 pathToScreenshot = Utils.configProp().getProperty("Path_ScreenShot").toString() +System.currentTimeMillis() +"-Evidence.jpg";
 					FileUtils.copyFile(scrFile, new File(pathToScreenshot));
-					
-				
+
 					
 				} catch (Exception e){
 					Log.error("Class Utils | Method takeScreenshot | Exception occured while capturing ScreenShot : "+e.getMessage());
