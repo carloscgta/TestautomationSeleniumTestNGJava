@@ -1,5 +1,5 @@
 # Testautomation
- Selenium Framework built using Java with Selenium and TestNG
+Selenium Framework built using Java with Selenium and TestNG
 
 alpha-sense-SeleniumAutomation
 Test Automation Framework using Java with Selenium WebDriver and TestNG This Framework use Maven, and all the dependecies are managed by the POM file.
