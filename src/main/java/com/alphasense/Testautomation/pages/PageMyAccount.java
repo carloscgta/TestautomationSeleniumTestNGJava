@@ -1,6 +1,8 @@
 package com.alphasense.Testautomation.pages;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -424,7 +426,7 @@ public class PageMyAccount extends BaseClass{
 		PageMyAccount.input_search().sendKeys(word);
 		pathToScreenshot=Utils.takeScreenshot(driver);
 	     pdfgenerator.PDFcontent("Entered the keyword 'Dress' to search ", pathToScreenshot);
-	     file.deleteIfExists()
+	     Files.deleteIfExists(Paths.get(pathToScreenshot));
 		
 		PageMyAccount.button_search().click();
 		Utils.takeScreenshot(driver);

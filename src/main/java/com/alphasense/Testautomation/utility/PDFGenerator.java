@@ -52,7 +52,7 @@ public class PDFGenerator {
 		new File("./report/").mkdirs();
 		String path= Utils.configProp().getProperty("Path_ScreenShot").toString();
 		PdfWriter.getInstance(document, new FileOutputStream((path+textTestCase+""+System.currentTimeMillis() +"alpha-sense-evidencia.pdf")));
-		//PdfWriter.getInstance(document, new FileOutputStream("//" + "Feature " + featureName + "//" + "evidencia.pdf"));
+		
 		document.open();
 
 		Font f = new Font();
@@ -67,7 +67,6 @@ public class PDFGenerator {
 		
 		
 		Image brand = Image.getInstance(Utils.configProp().getProperty("brandmark").toString());
-		//Image logo = Image.getInstance(Utils.prop.getProperty("brandmark").toString());
 		brand.scalePercent(10);
 		document.add(brand);
 

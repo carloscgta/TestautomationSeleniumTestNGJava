@@ -1,5 +1,8 @@
 package com.alphasense.Testautomation.pages;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -135,7 +138,8 @@ public class PageLogin extends BaseClass {
 	 public static String pathToScreenshot;
 	 public static boolean DoLogin(int iTestCaseRow) throws Exception{
 		  pathToScreenshot=Utils.takeScreenshot(driver);
-		 	
+		  pdfgenerator.PDFcontent("Home Page - Click in Sign to go to the Login Page", pathToScreenshot);
+	     Files.deleteIfExists(Paths.get(pathToScreenshot));
 		 	link_SignIn().click();
 		 	Thread.sleep(2000L);
 		 	Thread.sleep(2000L);
@@ -161,6 +165,7 @@ public class PageLogin extends BaseClass {
 	         
 	         pathToScreenshot=Utils.takeScreenshot(driver);
 		     pdfgenerator.PDFcontent("Entered Username and Password and click in Sign In Button", pathToScreenshot);
+		     Files.deleteIfExists(Paths.get(pathToScreenshot));
 	         button_SignIn().click();
 	         Thread.sleep(2000L);
 	         Thread.sleep(2000L);
@@ -173,6 +178,7 @@ public class PageLogin extends BaseClass {
 	        	 bResult = true;
 	        	 pathToScreenshot=Utils.takeScreenshot(driver);
 			     pdfgenerator.PDFcontent("Screen My Account", pathToScreenshot);
+			     Files.deleteIfExists(Paths.get(pathToScreenshot));
 	        	ExcelUtils.setCellData("Passed", iTestCaseRow, Constant.Col_Result);
 	         }else {
 	        	 bResult = false;
@@ -208,6 +214,7 @@ public class PageLogin extends BaseClass {
 	      
 	        pathToScreenshot=Utils.takeScreenshot(driver);
 		     pdfgenerator.PDFcontent("Performing the Login", pathToScreenshot);
+		     Files.deleteIfExists(Paths.get(pathToScreenshot));
 	         
 	        button_SignIn().click();
 	        Utils.takeScreenshot(driver); 
@@ -216,6 +223,7 @@ public class PageLogin extends BaseClass {
 	        	 bResult = true;
 	        	 pathToScreenshot=Utils.takeScreenshot(driver);
 			     pdfgenerator.PDFcontent("Validation of the error message", pathToScreenshot);
+			     Files.deleteIfExists(Paths.get(pathToScreenshot));
 		         
 	         }else {
 	        	 bResult = false;
@@ -239,6 +247,7 @@ public class PageLogin extends BaseClass {
 	       
 	        pathToScreenshot=Utils.takeScreenshot(driver);
 		     pdfgenerator.PDFcontent("Performing the Login", pathToScreenshot);
+		     Files.deleteIfExists(Paths.get(pathToScreenshot));
 	         
 	        button_SignIn().click();
 	        Utils.takeScreenshot(driver); 
@@ -248,6 +257,7 @@ public class PageLogin extends BaseClass {
 	        	 bResult = false;
 	        	 pathToScreenshot=Utils.takeScreenshot(driver);
 			     pdfgenerator.PDFcontent("Validation of the error message", pathToScreenshot);
+			     Files.deleteIfExists(Paths.get(pathToScreenshot));
 		         
 	         }else {
 	        	 bResult = true;

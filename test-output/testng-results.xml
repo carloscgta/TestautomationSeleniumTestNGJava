@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="1" total="2" passed="1">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="340163" started-at="2019-09-27T14:02:57Z" finished-at="2019-09-27T14:08:37Z">
+  <suite name="Default suite" duration-ms="226064" started-at="2019-09-27T14:37:16Z" finished-at="2019-09-27T14:41:02Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="340163" started-at="2019-09-27T14:02:57Z" finished-at="2019-09-27T14:08:37Z">
-      <class name="com.alphasense.Testautomation.tests.Test_PageMyAccountOrderShipClothes">
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.alphasense.Testautomation.tests.Test_PageMyAccountOrderShipClothes@30b8a058]" name="beforeMethod" is-config="true" duration-ms="27694" started-at="2019-09-27T14:02:57Z" finished-at="2019-09-27T14:03:25Z">
+    <test name="Default test" duration-ms="226064" started-at="2019-09-27T14:37:16Z" finished-at="2019-09-27T14:41:02Z">
+      <class name="com.alphasense.Testautomation.tests.Test_PageLogin">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.alphasense.Testautomation.tests.Test_PageLogin@30b8a058]" name="beforeMethod" is-config="true" duration-ms="40246" started-at="2019-09-27T14:37:16Z" finished-at="2019-09-27T14:37:56Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="TestDownloadInvoice()[pri:1, instance:com.alphasense.Testautomation.tests.Test_PageMyAccountOrderShipClothes@30b8a058]" name="TestDownloadInvoice" duration-ms="312257" started-at="2019-09-27T14:03:25Z" finished-at="2019-09-27T14:08:37Z">
+        <test-method status="PASS" signature="TestMethod()[pri:0, instance:com.alphasense.Testautomation.tests.Test_PageLogin@30b8a058]" name="TestMethod" duration-ms="184634" started-at="2019-09-27T14:37:56Z" finished-at="2019-09-27T14:41:01Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TestDownloadInvoice -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.alphasense.Testautomation.tests.Test_PageMyAccountOrderShipClothes@30b8a058]" name="afterMethod" is-config="true" duration-ms="110" started-at="2019-09-27T14:08:37Z" finished-at="2019-09-27T14:08:37Z">
+        </test-method> <!-- TestMethod -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.alphasense.Testautomation.tests.Test_PageLogin@30b8a058]" name="afterMethod" is-config="true" duration-ms="1013" started-at="2019-09-27T14:41:01Z" finished-at="2019-09-27T14:41:02Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-      </class> <!-- com.alphasense.Testautomation.tests.Test_PageMyAccountOrderShipClothes -->
+      </class> <!-- com.alphasense.Testautomation.tests.Test_PageLogin -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
