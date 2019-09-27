@@ -1,23 +1,8 @@
 package com.alphasense.Testautomation.utility;
 
 public class Constant {
-	//pre-prod
-    //public static final String URL = "https://10.129.105.121:6501/ouaf/loginPage.jsp";
-    
-    
-    //UAT
-    public static final String URL = "http://automationpractice.com/index.php";
-    
-    /*/var/lib/jenkins/workspace/SELENIUM/psrmSeleniumAutomation/testData/
-     * 
-     * 
-     * C:\\Users\\carlos.almeida\\Documents\\SIGT\\Automation\\NewVentures\\psrm\\testData\\
-     * C:\projetos\Automation\SeleniumAutomationProject\testData\TestData.xlsx
-     * 
-     * */
-	//public static final String URL = "https://10.129.106.198:6501/ouaf/loginPage.jsp"; /psrm/testData
-	public static final String Path_TestData = "C:\\Users\\carlos.almeida\\Documents\\SIGT\\Automation\\NewVentures\\Testautomation\\TestData\\";
-	public static final String File_TestData = "testData.xlsx";
+
+
 		
 	//Test Data Sheet Test_PageLogin
 	public static final int Col_TestCaseName = 0;	
@@ -53,8 +38,5 @@ public class Constant {
 	public static final int Col_SetBrowserOrderClothes = 2;
 	public static final int Col_SetExpectedResultOrderClothes = 3;
 	public static final int Col_SetResultOrderClothes = 4;
-	
 
-	// Path to the Screenshot files
-	public static final String Path_ScreenShot = "./evidences/";
 }

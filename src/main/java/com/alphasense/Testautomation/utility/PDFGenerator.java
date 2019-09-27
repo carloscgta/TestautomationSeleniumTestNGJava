@@ -45,7 +45,7 @@ public class PDFGenerator {
 	 * Method responsible to start the pdf file
 	 *
 	 */
-	public void iniciaPDF(String textTestCase) throws Exception {
+	public void startPDF(String textTestCase) throws Exception {
 		
 		document = new Document(PageSize.A4, 50, 50, 50, 50);
 		document.setPageSize(PageSize.A4);
@@ -98,7 +98,7 @@ public class PDFGenerator {
 	 * Method Responsible for adding the content in the document
 	 *
 	 */
-	public void conteudoPDF(String conteudoTestCaseTexts, String evidenceStringPath) throws Exception, DocumentException {
+	public void PDFcontent(String conteudoTestCaseTexts, String evidenceStringPath) throws Exception, DocumentException {
 
 		document.newPage();
 		Font color = new Font();
@@ -128,7 +128,7 @@ public class PDFGenerator {
 /*
  * MEthod Responsible to close the pdf file
  */
-	public void fechaPDF(boolean bResult) throws Exception {
+	public void closePDF(boolean bResult) throws Exception {
 		if (bResult == false) {
 
 			document.newPage();

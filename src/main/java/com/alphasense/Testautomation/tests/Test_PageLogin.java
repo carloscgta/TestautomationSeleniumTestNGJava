@@ -32,11 +32,11 @@ public class Test_PageLogin {
 	  @Parameters
 	  public void beforeMethod() throws Exception {
 		  
-		String ParamEnv = System.getProperty("uat").toString();
+		/*String ParamEnv = System.getProperty("uat").toString();
 		  String uatlink = Utils.configProp().getProperty("uatlink").toString();
 		if(ParamEnv.contains("uat")) {
 			  System.out.println(uatlink);
-		  }
+		  }*/
 		  
 				 
 		  DOMConfigurator.configure("log4j.xml");
@@ -47,7 +47,7 @@ public class Test_PageLogin {
 			iTestCaseRow = ExcelUtils.getRowContains(sTestCaseName,Constant.Col_TestCaseName);
 			Log.startTestCase(sTestCaseName);
 			
-			 pdfgenerator.iniciaPDF(sTestCaseName);
+			 pdfgenerator.startPDF(sTestCaseName);
 			
 		  driver = Utils.OpenBrowser(iTestCaseRow);
 		
@@ -67,7 +67,7 @@ public class Test_PageLogin {
 			
 		  }catch (Exception e){
 			 ExcelUtils.setCellData("Failed", iTestCaseRow, Constant.Col_Result);
-			 //Utils.takeScreenshot(driver, Hooks.sTestCaseName);
+			
 			  Log.error(e.getMessage());
 			  throw (e);
 		  }
@@ -76,7 +76,7 @@ public class Test_PageLogin {
 	  @AfterMethod
 	  public void afterMethod() throws Exception {
 		   Log.endTestCase(sTestCaseName);
-		   pdfgenerator.fechaPDF(result);
+		   pdfgenerator.closePDF(result);
 		   driver.close();
 	  		}
 }

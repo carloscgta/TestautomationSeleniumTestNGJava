@@ -11,17 +11,19 @@ import com.alphasense.Testautomation.utility.Constant;
 import com.alphasense.Testautomation.utility.ExcelUtils;
 import com.alphasense.Testautomation.utility.Functions;
 import com.alphasense.Testautomation.utility.Log;
+import com.alphasense.Testautomation.utility.PDFGenerator;
 import com.alphasense.Testautomation.utility.Utils;
 
 public class PageCreateAnAccount extends BaseClass {
 
 	private static WebElement element = null;
-	
+	public static PDFGenerator pdfgenerator = new PDFGenerator();
+	public String pathToScreenshot;
+	public static boolean result;
 	public PageCreateAnAccount(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
-	
 		
 	public static WebElement button_LoginIn() throws Exception{
     	try{
@@ -402,16 +404,22 @@ public class PageCreateAnAccount extends BaseClass {
 	
 	 public boolean createAccount(int iTestCaseRow) throws Exception{
 	     
-		 
+		
+	     
 		 if(button_LoginIn().isDisplayed()) {
+			 pathToScreenshot=Utils.takeScreenshot(driver);
+		     pdfgenerator.PDFcontent("Click on Sigin Link", pathToScreenshot);
 			 PageCreateAnAccount.button_LoginIn().click();
 		 }
 		 if(input_emailCreate().isDisplayed()) {
-			 PageCreateAnAccount.input_emailCreate().sendKeys(Functions.randomAlphaEmail());;
+			 PageCreateAnAccount.input_emailCreate().sendKeys(Functions.randomAlphaEmail());
+			 
 		 }
-		 Utils.takeScreenshot(driver);
+	
 		 
 		 if( button_createAccount().isDisplayed()) {
+			 pathToScreenshot=Utils.takeScreenshot(driver);
+		     pdfgenerator.PDFcontent("Filling the account required information", pathToScreenshot);
 			 PageCreateAnAccount.button_createAccount().click();
 		 }
 		  
@@ -425,6 +433,8 @@ public class PageCreateAnAccount extends BaseClass {
 		 
 		 if( input_Lastname().isDisplayed()) {
 			 PageCreateAnAccount.input_Lastname().sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.Col_LastName).toString());
+			 pathToScreenshot=Utils.takeScreenshot(driver);
+		     pdfgenerator.PDFcontent("Filling the account required information", pathToScreenshot);
 		 }
 		 
 		 
@@ -438,11 +448,15 @@ public class PageCreateAnAccount extends BaseClass {
 		PageCreateAnAccount.selectBox_MonthByIndex(7);
 		PageCreateAnAccount.selectBox_Year(34);
 		
+		pathToScreenshot=Utils.takeScreenshot(driver);
+	     pdfgenerator.PDFcontent("Filling the account required information", pathToScreenshot);
 		PageCreateAnAccount.input_AddressForm_FirstName().sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.Col_AddressFirstName).toString());
 		PageCreateAnAccount.input_AddressForm_LastName().sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.Col_AddressLastName).toString());
 		PageCreateAnAccount.input_AddressForm_CompanyName().sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.Col_Expected).toString());    
 		
 		PageCreateAnAccount.input_AddressForm_Address01().sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.Col_AddressLine2).toString());
+		pathToScreenshot=Utils.takeScreenshot(driver);
+	     pdfgenerator.PDFcontent("Filling the account required information", pathToScreenshot);
 		
 		PageCreateAnAccount.input_AddressForm_City().sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.Col_City).toString());
 		select_AddressForm_state("2");
@@ -452,21 +466,28 @@ public class PageCreateAnAccount extends BaseClass {
 		select_AddressForm_Country(1);
 		
 		PageCreateAnAccount.input_AddressForm_AdditionaInfor().sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.Col_AditionalInfo).toString());
-		
+		pathToScreenshot=Utils.takeScreenshot(driver);
+	    pdfgenerator.PDFcontent("Filling the account required information", pathToScreenshot);
+	     
+	    
 		PageCreateAnAccount.input_Mobilephone().sendKeys("123456789");
 		
 		PageCreateAnAccount.input_AliasAddress().sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.Col_AddressAlias).toString());
-		
+		pathToScreenshot=Utils.takeScreenshot(driver);
+	     pdfgenerator.PDFcontent("Filling the account required information", pathToScreenshot);
+	     
 		PageCreateAnAccount.button_Register().click();
 	         
 	        if(PageLogin.button_OrderHistoryDetails().isDisplayed()){
-	        	 bResult = true;
+	        	 result = true;
+	        	 pathToScreenshot=Utils.takeScreenshot(driver);
+	    	     pdfgenerator.PDFcontent("Click on button_createAccount", pathToScreenshot);
 	         }else {
-	        	 bResult = false;
+	        	 result = false;
 	         }
 	         
 	         //Utils.driver.wait(15);
-	         return bResult;
+	         return result;
 	        
 	     }
 	

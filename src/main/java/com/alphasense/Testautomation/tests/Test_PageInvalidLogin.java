@@ -42,7 +42,7 @@ public class Test_PageInvalidLogin{
 			Log.startTestCase(sTestCaseName);
 			
 		  driver = Utils.OpenBrowser(iTestCaseRow);
-		  pdfgenerator.iniciaPDF(sTestCaseName);
+		  pdfgenerator.startPDF(sTestCaseName);
 		
 			new BaseClass(driver);  
 	        }
@@ -59,8 +59,8 @@ public class Test_PageInvalidLogin{
 			  }
 
 		  }catch (Exception e){
-			 //ExcelUtils.setCellData("Fail", Hooks.iTestCaseRow, Constant.Col_Result);
-			 //Utils.takeScreenshot(driver, Hooks.sTestCaseName);
+			ExcelUtils.setCellData("Fail", iTestCaseRow, Constant.Col_Result);
+			
 			  Log.error(e.getMessage());
 			  throw (e);
 		  }
@@ -69,7 +69,7 @@ public class Test_PageInvalidLogin{
 	  @AfterMethod
 	  public void afterMethod() throws Exception {
 		   Log.endTestCase(sTestCaseName);
-		   pdfgenerator.fechaPDF(result);
+		   pdfgenerator.closePDF(result);
 		   driver.close();
 	  		}
 }

@@ -13,26 +13,32 @@ import com.alphasense.Testautomation.pages.PageCreateAnAccount;
 import com.alphasense.Testautomation.utility.Constant;
 import com.alphasense.Testautomation.utility.ExcelUtils;
 import com.alphasense.Testautomation.utility.Log;
+import com.alphasense.Testautomation.utility.PDFGenerator;
 import com.alphasense.Testautomation.utility.Utils;
 
 public class Test_PageCreateAnAccount{
+	
 
 	public static WebDriver driver = null;
 	public static String sTestCaseName;
 	public static int iTestCaseRow;
 	PageCreateAnAccount createaccountPage = new PageCreateAnAccount(driver);
+	PDFGenerator pdfgenerator = new PDFGenerator();
+	public static boolean result;
+	
 	  @BeforeMethod
 	  public void beforeMethod() throws Exception {
 		  
 		  DOMConfigurator.configure("log4j.xml");
 		  	sTestCaseName = this.toString();
 			sTestCaseName = Utils.getTestCaseName(this.toString());
-			ExcelUtils.setExcelFile(Constant.Path_TestData + Constant.File_TestData, "sheetCreateAccount");
+			String pathtoData= Utils.configProp().getProperty("Path_TestData").toString();
+			ExcelUtils.setExcelFile(pathtoData, "sheetCreateAccount");
 			iTestCaseRow = ExcelUtils.getRowContains(sTestCaseName,Constant.Col_setTestCaseName);
 			Log.startTestCase(sTestCaseName);
 			
 		  driver = Utils.OpenBrowser(iTestCaseRow);
-		  
+		  pdfgenerator.startPDF(sTestCaseName);
 		
 			new BaseClass(driver);  
 	        }
@@ -40,7 +46,7 @@ public class Test_PageCreateAnAccount{
 	  @Test
 	  public void TestMethod() throws Exception {
 		  try{
-			boolean result=false;
+			result=false;
 			result=createaccountPage.createAccount(iTestCaseRow);
 			  
 			//Assert.assertEquals(false, result);
@@ -49,18 +55,18 @@ public class Test_PageCreateAnAccount{
 			  }
 
 		  }catch (Exception e){
-			 //ExcelUtils.setCellData("Fail", Hooks.iTestCaseRow, Constant.Col_Result);
-			 //Utils.takeScreenshot(driver, Hooks.sTestCaseName);
+			  ExcelUtils.setCellData("Failed", iTestCaseRow, Constant.Col_ResultResponse);  
 			  Log.error(e.getMessage());
 			  throw (e);
 		  }
 			
 	  }
 	  @AfterMethod
-	  public void TearDown() {
+	  public void TearDown() throws Exception {
 		   Log.endTestCase(sTestCaseName);
+		   pdfgenerator.closePDF(result);
 		   if(driver != null) {
-			   //driver.close();
+			driver.quit();
 		   }
 		
 	  		}

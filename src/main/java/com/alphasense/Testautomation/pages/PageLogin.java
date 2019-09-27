@@ -137,7 +137,9 @@ public class PageLogin extends BaseClass {
 		  pathToScreenshot=Utils.takeScreenshot(driver);
 		 	
 		 	link_SignIn().click();
-		 
+		 	Thread.sleep(2000L);
+		 	Thread.sleep(2000L);
+		 	Thread.sleep(2000L);
 		   	// Storing the UserName in to a String variable and Getting the UserName from Test Data Excel sheet
 	     	// iTestcaseRow is the row number of our Testcase name in the Test Data sheet
 	     	// Constant.Col_UserName is the column number for UserName column in the Test Data sheet
@@ -158,16 +160,19 @@ public class PageLogin extends BaseClass {
 	         Log.info(sPassword+" is entered in Password text box" );
 	         
 	         pathToScreenshot=Utils.takeScreenshot(driver);
-		     pdfgenerator.conteudoPDF("Entered Username and Password and click in Sign In Button", pathToScreenshot);
+		     pdfgenerator.PDFcontent("Entered Username and Password and click in Sign In Button", pathToScreenshot);
 	         button_SignIn().click();
+	         Thread.sleep(2000L);
+	         Thread.sleep(2000L);
+	         Thread.sleep(2000L);
 	         
 	         pathToScreenshot=Utils.takeScreenshot(driver);
-		     pdfgenerator.conteudoPDF("My Account", pathToScreenshot);
+		     pdfgenerator.PDFcontent("My Account", pathToScreenshot);
 	         
 	          if(button_OrderHistoryDetails().isDisplayed()){
 	        	 bResult = true;
 	        	 pathToScreenshot=Utils.takeScreenshot(driver);
-			     pdfgenerator.conteudoPDF("Screen My Account", pathToScreenshot);
+			     pdfgenerator.PDFcontent("Screen My Account", pathToScreenshot);
 	        	ExcelUtils.setCellData("Passed", iTestCaseRow, Constant.Col_Result);
 	         }else {
 	        	 bResult = false;
@@ -191,7 +196,7 @@ public class PageLogin extends BaseClass {
 	        Utils.takeScreenshot(driver);
 	      
 	        pathToScreenshot=Utils.takeScreenshot(driver);
-		     pdfgenerator.conteudoPDF("Performing the Login", pathToScreenshot);
+		     pdfgenerator.PDFcontent("Performing the Login", pathToScreenshot);
 	         
 	        button_SignIn().click();
 	        Utils.takeScreenshot(driver); 
@@ -199,7 +204,7 @@ public class PageLogin extends BaseClass {
 	        if(button_OrderHistoryDetails().isDisplayed()){
 	        	 bResult = true;
 	        	 pathToScreenshot=Utils.takeScreenshot(driver);
-			     pdfgenerator.conteudoPDF("Validation of the error message", pathToScreenshot);
+			     pdfgenerator.PDFcontent("Validation of the error message", pathToScreenshot);
 		         
 	         }else {
 	        	 bResult = false;
@@ -217,19 +222,21 @@ public class PageLogin extends BaseClass {
 		 	
 		 	
 	        input_email().sendKeys(user); 
+	        
 	        input_password().sendKeys(password);
-	        Utils.takeScreenshot(driver);
-	      
+	        
+	       
 	        pathToScreenshot=Utils.takeScreenshot(driver);
-		     pdfgenerator.conteudoPDF("Performing the Login", pathToScreenshot);
+		     pdfgenerator.PDFcontent("Performing the Login", pathToScreenshot);
 	         
 	        button_SignIn().click();
 	        Utils.takeScreenshot(driver); 
 	       
+	        
 	        if(h1classtext_AthenticationErrorMessage().isDisplayed()){
 	        	 bResult = false;
 	        	 pathToScreenshot=Utils.takeScreenshot(driver);
-			     pdfgenerator.conteudoPDF("Validation of the error message", pathToScreenshot);
+			     pdfgenerator.PDFcontent("Validation of the error message", pathToScreenshot);
 		         
 	         }else {
 	        	 bResult = true;

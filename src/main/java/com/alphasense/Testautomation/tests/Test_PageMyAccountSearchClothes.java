@@ -13,6 +13,7 @@ import com.alphasense.Testautomation.pages.PageMyAccount;
 import com.alphasense.Testautomation.utility.Constant;
 import com.alphasense.Testautomation.utility.ExcelUtils;
 import com.alphasense.Testautomation.utility.Log;
+import com.alphasense.Testautomation.utility.PDFGenerator;
 import com.alphasense.Testautomation.utility.Utils;
 import com.beust.jcommander.Parameter;
 
@@ -22,6 +23,7 @@ public class Test_PageMyAccountSearchClothes {
 	public static String sTestCaseName;
 	public static int iTestCaseRow;
 	public PageMyAccount pagemyaccount = new  PageMyAccount(driver) ;
+	PDFGenerator pdfgenerator = new PDFGenerator();
 	public PageLogin pagelogin = new PageLogin(driver);
 	public boolean loginResult = false;
 	public boolean result = false;
@@ -39,11 +41,12 @@ public class Test_PageMyAccountSearchClothes {
 		  	sTestCaseName = this.toString();
 			sTestCaseName = Utils.getTestCaseName(this.toString());
 			String path= Utils.configProp().getProperty("Path_TestData").toString();
-			ExcelUtils.setExcelFile(path, "sheetSearchClothes");
+			ExcelUtils.setExcelFile(path, "Test_PageMyAccountSearchClothes");
 			iTestCaseRow = ExcelUtils.getRowContains(sTestCaseName,Constant.Col_TestCaseName);
 			Log.startTestCase(sTestCaseName);
 			
 		  driver = Utils.OpenBrowser(iTestCaseRow);
+		  pdfgenerator.startPDF(sTestCaseName);
 		
 			new BaseClass(driver);  
 	        }
@@ -70,9 +73,10 @@ public class Test_PageMyAccountSearchClothes {
 			
 	  }
 	  @AfterMethod
-	  public void afterMethod() {
+	  public void afterMethod() throws Exception {
 		   Log.endTestCase(sTestCaseName);
-		   driver.close();
+		   pdfgenerator.closePDF(result);
+		   driver.quit();
 	  		}
 	
 }

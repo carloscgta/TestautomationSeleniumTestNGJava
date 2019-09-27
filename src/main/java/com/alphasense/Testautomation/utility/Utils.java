@@ -27,8 +27,9 @@ public static WebDriver OpenBrowser(int iTestCaseRow) throws Exception{
 		System.setProperty("webdriver.chrome.driver",Utils.configProp().getProperty("chromeDriver").toString());
 		chromeOptions = new ChromeOptions();
 
-		chromeOptions.addArguments("--headless");
+		/*chromeOptions.addArguments("--headless");
 		chromeOptions.addArguments("--disable-notifications");
+		chromeOptions.addArguments("window-size=1920,1080");*/
 		driver = new ChromeDriver(chromeOptions);
 		Log.info("New driver instantiated");
 	    driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);

@@ -4,23 +4,20 @@ import java.io.File;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Sleeper;
 
-import com.alphasense.Testautomation.utility.Constant;
-import com.alphasense.Testautomation.utility.ExcelUtils;
 import com.alphasense.Testautomation.utility.Functions;
 import com.alphasense.Testautomation.utility.Log;
+import com.alphasense.Testautomation.utility.PDFGenerator;
 import com.alphasense.Testautomation.utility.Utils;
 
 
 public class PageMyAccount extends BaseClass{
 	private static WebElement element = null;
-
+	PDFGenerator pdfgenerator = new PDFGenerator();
+	public String pathToScreenshot;
 	public PageMyAccount(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
@@ -381,7 +378,8 @@ public class PageMyAccount extends BaseClass{
 	public boolean searchClothes(String word) throws Exception {
 		boolean result = false;
 		PageMyAccount.input_search().sendKeys(word);
-		Utils.takeScreenshot(driver);
+		pathToScreenshot=Utils.takeScreenshot(driver);
+	     pdfgenerator.PDFcontent("Entered the keyword 'Dress' to search ", pathToScreenshot);
 		
 		PageMyAccount.button_search().click();
 		Utils.takeScreenshot(driver);
@@ -402,54 +400,61 @@ public class PageMyAccount extends BaseClass{
 		boolean result = false;
 		String word = Utils.configProp().getProperty("keyWordSearch").toString();
 		searchClothes(word);
-		//PageMyAccount.input_search().sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.Col_ClothingName).toString());
-		Utils.takeScreenshot(driver);
-
-		Utils.takeScreenshot(driver);
+		
+		pathToScreenshot=Utils.takeScreenshot(driver);
+	     pdfgenerator.PDFcontent("View the search result for 'Dress' keyword - and clicking in Add to Chart button", pathToScreenshot);
 		Thread.sleep(2000L);
 		
-
 		ClickONbutton_addToChart();
 		
 		Thread.sleep(2000L);
-		Utils.takeScreenshot(driver);
+		pathToScreenshot=Utils.takeScreenshot(driver);
+	    pdfgenerator.PDFcontent("Click in Proceed to checkout ", pathToScreenshot);
 		
 		PageMyAccount.switchButton_proceedToCheckout().click();;
 		
-		
-		Utils.takeScreenshot(driver);
 		Thread.sleep(2000L);
 		
 		PageMyAccount.ScrollDownClickOnButton_summaryProceedToCheckout();
 		
-		Utils.takeScreenshot(driver);
+		pathToScreenshot=Utils.takeScreenshot(driver);
+	     pdfgenerator.PDFcontent("Summary screen - Click in Proceed to checkout", pathToScreenshot);
+
 		Thread.sleep(2000L);
 		PageMyAccount.button_addressProceedToCheckout();
-		Utils.takeScreenshot(driver);
+	
 		
+		pathToScreenshot=Utils.takeScreenshot(driver);
+	     pdfgenerator.PDFcontent("Click in Check box agree with terms", pathToScreenshot);
 		Thread.sleep(2000L);
 		PageMyAccount.inputType_checkBoxAgreeWithTerms().click();
-		Utils.takeScreenshot(driver);
+
 		
-		
+		pathToScreenshot=Utils.takeScreenshot(driver);
+	     pdfgenerator.PDFcontent("Click in proceed to checkout", pathToScreenshot);
 		Thread.sleep(2000L);
 		PageMyAccount.button_shippingProceedToCheckout();
-		Utils.takeScreenshot(driver);
+	
 		
 		
+		pathToScreenshot=Utils.takeScreenshot(driver);
+	     pdfgenerator.PDFcontent("Click in button_payByBanwire", pathToScreenshot);
 		Thread.sleep(2000L);
 		PageMyAccount.button_payByBanwire().click();
-		Utils.takeScreenshot(driver);
+
 		
-		
+		pathToScreenshot=Utils.takeScreenshot(driver);
+	     pdfgenerator.PDFcontent("Click in IConfirmMyOrder", pathToScreenshot);
 		Thread.sleep(2000L);
 		PageMyAccount.button_IConfirmMyOrder().click();
-		Utils.takeScreenshot(driver);
+
 		
 		Thread.sleep(2000L);
 		Thread.sleep(2000L);
 		if(PageMyAccount.label_shippingConfirmation().getText().toString().contains("ORDER CONFIRMATION")) {
 			result=true;
+			pathToScreenshot=Utils.takeScreenshot(driver);
+		     pdfgenerator.PDFcontent("Validate the Shipping confirmation page", pathToScreenshot);
 		}
 		
 		Thread.sleep(2000L);

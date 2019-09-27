@@ -13,6 +13,7 @@ import com.alphasense.Testautomation.pages.PageMyAccount;
 import com.alphasense.Testautomation.utility.Constant;
 import com.alphasense.Testautomation.utility.ExcelUtils;
 import com.alphasense.Testautomation.utility.Log;
+import com.alphasense.Testautomation.utility.PDFGenerator;
 import com.alphasense.Testautomation.utility.Utils;
 
 public class Test_PageMyAccountOrderShipClothes {
@@ -21,6 +22,9 @@ public class Test_PageMyAccountOrderShipClothes {
 	public static int iTestCaseRow;
 	public PageMyAccount pagemyaccount = new PageMyAccount(driver);
 	public PageLogin pagelogin = new PageLogin(driver);
+	public static boolean result;
+	PDFGenerator pdfgenerator = new PDFGenerator();
+
 
 	  @BeforeMethod
 	  @Parameters
@@ -40,6 +44,7 @@ public class Test_PageMyAccountOrderShipClothes {
 			Log.startTestCase(sTestCaseName);
 			
 		  driver = Utils.OpenBrowser(iTestCaseRow);
+		  pdfgenerator.startPDF(sTestCaseName);
 		
 			new BaseClass(driver);  
 	        }
@@ -47,15 +52,15 @@ public class Test_PageMyAccountOrderShipClothes {
 	  @Test
 	  public void TestMethod() throws Exception {
 		  try{
-			  boolean ShippResult = false;
+			  result = false;
 		boolean loginResult	=  pagelogin.LoginIntoMyStore(Utils.configProp().getProperty("user").toString(),Utils.configProp().getProperty("passwd").toString());
 			  
 		if(loginResult == true) {
-			 ShippResult=pagemyaccount.shippingClothes();
+			result=pagemyaccount.shippingClothes();
 		}
 					  
 			//Assert.assertEquals(false, result);  
-			if(ShippResult == true) {
+			if(result == true) {
 				  ExcelUtils.setCellData("Passed", iTestCaseRow, Constant.Col_SetResultOrderClothes);  
 			  }
 
@@ -68,8 +73,9 @@ public class Test_PageMyAccountOrderShipClothes {
 			
 	  }
 	  @AfterMethod
-	  public void afterMethod() {
+	  public void afterMethod() throws Exception {
 		   Log.endTestCase(sTestCaseName);
+		   pdfgenerator.closePDF(result);
 		   driver.close();
 	  		}
 }
