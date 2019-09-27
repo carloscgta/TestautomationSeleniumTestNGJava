@@ -33,7 +33,7 @@ public class Test_PageCreateAnAccount{
 		  	sTestCaseName = this.toString();
 			sTestCaseName = Utils.getTestCaseName(this.toString());
 			String pathtoData= Utils.configProp().getProperty("Path_TestData").toString();
-			ExcelUtils.setExcelFile(pathtoData, "sheetCreateAccount");
+			ExcelUtils.setExcelFile(pathtoData, "Test_PageCreateAnAccount");
 			iTestCaseRow = ExcelUtils.getRowContains(sTestCaseName,Constant.Col_setTestCaseName);
 			Log.startTestCase(sTestCaseName);
 			
@@ -49,7 +49,8 @@ public class Test_PageCreateAnAccount{
 			result=false;
 			result=createaccountPage.createAccount(iTestCaseRow);
 			  
-			//Assert.assertEquals(false, result);
+			 Assert.assertTrue(result, "Account was created, you can check the evidences in the pdf report.");
+			 
 			if(result == true) {
 				  ExcelUtils.setCellData("Passed", iTestCaseRow, Constant.Col_ResultResponse);  
 			  }

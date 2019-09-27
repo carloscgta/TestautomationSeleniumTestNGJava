@@ -2,6 +2,7 @@ package com.alphasense.Testautomation.tests;
 
 import org.apache.log4j.extras.DOMConfigurator;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
@@ -59,9 +60,11 @@ public class Test_PageMyAccountSearchClothes {
 			
 			result=pagemyaccount.searchClothes(Utils.configProp().getProperty("keyWordSearch").toString());
 			  
-			//Assert.assertEquals(false, result);  
+			 Assert.assertTrue(result, "Search was performed successfully");
+			 
 			if(loginResult =true  && result == true) {
 				  ExcelUtils.setCellData("Passed", iTestCaseRow, Constant.Col_SetResultOrderClothes);  
+				 
 			  }
 
 		  }catch (Exception e){

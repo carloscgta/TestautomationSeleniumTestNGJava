@@ -390,6 +390,7 @@ public class PageMyAccount extends BaseClass{
 		
 		if(PageMyAccount.h1Label_searchResultCountText().getText().contains(numberAsString)) {
 			result=true;
+			//BaseClass.pathToScreenshot = numberAsString;
 		}
 	
 		return result;
@@ -418,33 +419,31 @@ public class PageMyAccount extends BaseClass{
 		PageMyAccount.ScrollDownClickOnButton_summaryProceedToCheckout();
 		
 		pathToScreenshot=Utils.takeScreenshot(driver);
-	     pdfgenerator.PDFcontent("Summary screen - Click in Proceed to checkout", pathToScreenshot);
+	    pdfgenerator.PDFcontent("Summary screen - Click in Proceed to checkout", pathToScreenshot);
 
 		Thread.sleep(2000L);
 		PageMyAccount.button_addressProceedToCheckout();
 	
 		
 		pathToScreenshot=Utils.takeScreenshot(driver);
-	     pdfgenerator.PDFcontent("Click in Check box agree with terms", pathToScreenshot);
+	    pdfgenerator.PDFcontent("Click in Check box agree with terms", pathToScreenshot);
 		Thread.sleep(2000L);
 		PageMyAccount.inputType_checkBoxAgreeWithTerms().click();
 
-		
 		pathToScreenshot=Utils.takeScreenshot(driver);
-	     pdfgenerator.PDFcontent("Click in proceed to checkout", pathToScreenshot);
+	    pdfgenerator.PDFcontent("Click in proceed to checkout", pathToScreenshot);
 		Thread.sleep(2000L);
 		PageMyAccount.button_shippingProceedToCheckout();
 	
 		
-		
 		pathToScreenshot=Utils.takeScreenshot(driver);
-	     pdfgenerator.PDFcontent("Click in button_payByBanwire", pathToScreenshot);
+	    pdfgenerator.PDFcontent("Click in button_payByBanwire", pathToScreenshot);
 		Thread.sleep(2000L);
 		PageMyAccount.button_payByBanwire().click();
 
 		
 		pathToScreenshot=Utils.takeScreenshot(driver);
-	     pdfgenerator.PDFcontent("Click in IConfirmMyOrder", pathToScreenshot);
+	    pdfgenerator.PDFcontent("Click in IConfirmMyOrder", pathToScreenshot);
 		Thread.sleep(2000L);
 		PageMyAccount.button_IConfirmMyOrder().click();
 
@@ -455,6 +454,7 @@ public class PageMyAccount extends BaseClass{
 			result=true;
 			pathToScreenshot=Utils.takeScreenshot(driver);
 		     pdfgenerator.PDFcontent("Validate the Shipping confirmation page", pathToScreenshot);
+		     BaseClass.pathToScreenshot = pathToScreenshot;
 		}
 		
 		Thread.sleep(2000L);

@@ -53,7 +53,8 @@ public class Test_PageInvalidLogin{
 			  
 			 result=PageLogin.InvalidLoginIntoMyStore(Utils.configProp().getProperty("user").toString(), Utils.configProp().getProperty("invalidPass").toString());
 			  
-		//	Assert.assertEquals(false, result);  
+		
+			 Assert.assertFalse(result, "Login shouldn't be successful, but actually was");
 			if(result == false) {
 				  ExcelUtils.setCellData("Passed",iTestCaseRow, Constant.Col_Result);  
 			  }

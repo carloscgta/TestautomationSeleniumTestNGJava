@@ -2,6 +2,7 @@ package com.alphasense.Testautomation.tests;
 
 import org.apache.log4j.extras.DOMConfigurator;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
@@ -57,9 +58,10 @@ public class Test_PageMyAccountOrderShipClothes {
 			  
 		if(loginResult == true) {
 			result=pagemyaccount.shippingClothes();
+			 Assert.assertTrue(result, "Shipping confirmation page, check the screenshot in "+BaseClass.pathToScreenshot);
 		}
 					  
-			//Assert.assertEquals(false, result);  
+			
 			if(result == true) {
 				  ExcelUtils.setCellData("Passed", iTestCaseRow, Constant.Col_SetResultOrderClothes);  
 			  }
