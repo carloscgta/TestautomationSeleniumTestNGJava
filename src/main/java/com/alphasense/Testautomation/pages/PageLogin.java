@@ -187,10 +187,21 @@ public class PageLogin extends BaseClass {
  	 
 	 public boolean LoginIntoMyStore(String user, String password) throws Exception{
 	     	
-	     	
+		   Thread.sleep(2000L);
+	         Thread.sleep(2000L);
+	         Thread.sleep(2000L);
 		 	link_SignIn().click();
-		 	
-		 	
+		    Thread.sleep(2000L);
+	         Thread.sleep(2000L);
+	         Thread.sleep(2000L);
+	         Thread.sleep(2000L);
+	         Thread.sleep(2000L);
+	         Thread.sleep(2000L);
+	         Thread.sleep(2000L);
+	         Thread.sleep(2000L);
+	         Thread.sleep(2000L);
+	         driver.navigate().refresh();
+	         
 	        input_email().sendKeys(user); 
 	        input_password().sendKeys(password);
 	        Utils.takeScreenshot(driver);

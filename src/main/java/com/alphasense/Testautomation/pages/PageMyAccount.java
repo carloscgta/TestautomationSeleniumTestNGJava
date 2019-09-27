@@ -420,9 +420,11 @@ public class PageMyAccount extends BaseClass{
 			
 	public boolean searchClothes(String word) throws Exception {
 		result = false;
+		File file;
 		PageMyAccount.input_search().sendKeys(word);
 		pathToScreenshot=Utils.takeScreenshot(driver);
 	     pdfgenerator.PDFcontent("Entered the keyword 'Dress' to search ", pathToScreenshot);
+	     file.deleteIfExists()
 		
 		PageMyAccount.button_search().click();
 		Utils.takeScreenshot(driver);
@@ -507,7 +509,7 @@ public class PageMyAccount extends BaseClass{
 		return result;
 		
 	}
-	
+
 	public boolean downloadPDFInvoice() throws Exception {
 		link_BackToOrders().click();
 		//String totalPRice = BaseClass.auxValue;
@@ -516,34 +518,21 @@ public class PageMyAccount extends BaseClass{
 		
 		link_PDFInvoiceDownload().click();
 		
-		File pdfFile = Functions.getLatestFilefromDir(pathDownloadDir);
+		File pdfFile = Functions.getLatestFileFromDownload(pathDownloadDir);
+		
 		if (pdfFile.getName().contains("IN")) {
 			result = true;
+			
+		System.out.println("THe file can found on this directory: "+pdfFile.getAbsolutePath().toString());
+			
 		}else {
 			result = false;
 		}
 		
 		return result;
 	}
+
 	
-	public static boolean verifyDownloadedFile(String stringLocationFolder) throws InterruptedException {
-        File directory = new File(stringLocationFolder);
-        result=  false;
-        File[] filesList =null;
-    
-                filesList =  directory.listFiles();
-                for (File file : filesList) {
-                	
-                	if(file.getName().contains("IN127609.pdf")) {
-                                    
-                    	result = true;
-                    }
-                }
-				return result;
-                
-                
-                
-            }
-    
+
 	
 }

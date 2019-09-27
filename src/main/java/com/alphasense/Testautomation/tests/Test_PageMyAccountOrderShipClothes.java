@@ -50,8 +50,9 @@ public class Test_PageMyAccountOrderShipClothes {
 			new BaseClass(driver);  
 	        }
 	  
-	  @Test
-	  public void TestMethod() throws Exception {
+	  
+	  @Test(priority=2, enabled=true)
+	  public void TestShippingClothes() throws Exception {
 		  try{
 			  result = false;
 		boolean loginResult	=  pagelogin.LoginIntoMyStore(Utils.configProp().getProperty("user").toString(),Utils.configProp().getProperty("passwd").toString());
@@ -75,7 +76,7 @@ public class Test_PageMyAccountOrderShipClothes {
 			
 	  }
 	  
-	  @Test
+	  @Test(priority=1, enabled=true)
 	  public void TestDownloadInvoice() throws Exception {
 		  try{
 			  result = false;
@@ -86,8 +87,7 @@ public class Test_PageMyAccountOrderShipClothes {
 			result=pagemyaccount.downloadPDFInvoice();
 			 
 		}
-					  
-			
+
 			if(result == true) {
 				  ExcelUtils.setCellData("Passed", iTestCaseRow, Constant.Col_SetResultOrderClothes);  
 			  }

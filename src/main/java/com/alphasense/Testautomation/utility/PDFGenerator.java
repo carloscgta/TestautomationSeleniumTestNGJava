@@ -66,10 +66,10 @@ public class PDFGenerator {
 		font.setSize(20);
 		
 		
-		Image logo = Image.getInstance(Utils.configProp().getProperty("brandmark").toString());
+		Image brand = Image.getInstance(Utils.configProp().getProperty("brandmark").toString());
 		//Image logo = Image.getInstance(Utils.prop.getProperty("brandmark").toString());
-		logo.scalePercent(10);
-		document.add(logo);
+		brand.scalePercent(10);
+		document.add(brand);
 
 		document.add(new Paragraph(textTestCase, f));
 
@@ -108,9 +108,6 @@ public class PDFGenerator {
 		color.setColor(BaseColor.BLUE);
 
 		document.add(new Paragraph(conteudoTestCaseTexts, color));
-
-
-
 		Image image = Image.getInstance(evidenceStringPath);
 		 path = evidenceStringPath;
 		
@@ -163,8 +160,6 @@ public class PDFGenerator {
 			document.close();
 		}
 	}
-
-
 
 	public static String getDefaultBrowser() {
 		try {

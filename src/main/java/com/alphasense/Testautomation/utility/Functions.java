@@ -47,8 +47,8 @@ public class Functions  {
 
     }
     
-    /* Get the latest file from a specific directory*/
-	public static File getLatestFilefromDir(String dirPath){
+    /* Get the latest file from from Download Folder*/
+	public static File getLatestFileFromDownload(String dirPath){
 	    File dir = new File(dirPath);
 	    File[] files = dir.listFiles();
 	    if (files == null || files.length == 0) {
@@ -65,8 +65,8 @@ public class Functions  {
 	}
 	
 	
-	/* Check the file from a specific directory with extension */
-	public static boolean isFileDownloaded_Ext(String dirPath, String ext){
+	/* Verify if the  file exist in a specific directory using the extension */
+	public static boolean check_FileDownloaded(String dirPath, String ext){
 		boolean flag=false;
 	    File dir = new File(dirPath);
 	    File[] files = dir.listFiles();
@@ -82,5 +82,25 @@ public class Functions  {
 	    return flag;
 	}
 	
+	//Not used
+	public static boolean verifyDownloadedFile(String stringLocationFolder) throws InterruptedException {
+        File directory = new File(stringLocationFolder);
+        boolean result=  false;
+        File[] filesList =null;
+    
+                filesList =  directory.listFiles();
+                for (File file : filesList) {
+                	
+                	if(file.getName().contains("IN127609.pdf")) {
+                                    
+                    	result = true;
+                    }
+                }
+				return result;
+                
+                
+                
+            }
+    
 	
 }

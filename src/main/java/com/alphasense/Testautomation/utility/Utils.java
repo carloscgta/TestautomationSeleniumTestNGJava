@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -80,6 +82,8 @@ public static String getTestCaseName(String sTestCase)throws Exception{
 					File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 					 pathToScreenshot = Utils.configProp().getProperty("Path_ScreenShot").toString() +System.currentTimeMillis() +"-Evidence.jpg";
 					FileUtils.copyFile(scrFile, new File(pathToScreenshot));
+					
+				
 					
 				} catch (Exception e){
 					Log.error("Class Utils | Method takeScreenshot | Exception occured while capturing ScreenShot : "+e.getMessage());

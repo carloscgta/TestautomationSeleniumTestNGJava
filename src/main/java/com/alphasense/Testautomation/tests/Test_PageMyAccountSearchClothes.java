@@ -52,7 +52,7 @@ public class Test_PageMyAccountSearchClothes {
 			new BaseClass(driver);  
 	        }
 	  
-	  @Test
+	  @Test(enabled=true)
 	  public void TestMethod() throws Exception {
 		  try{
 			loginResult = pagelogin.LoginIntoMyStore(Utils.configProp().getProperty("user").toString(),Utils.configProp().getProperty("passwd").toString());
