@@ -18,6 +18,9 @@ public class PageMyAccount extends BaseClass{
 	private static WebElement element = null;
 	PDFGenerator pdfgenerator = new PDFGenerator();
 	public String pathToScreenshot;
+	
+	public static boolean result; 
+	
 	public PageMyAccount(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
@@ -374,9 +377,49 @@ public class PageMyAccount extends BaseClass{
        	return count;
        
 	}
+	public static WebElement link_BackToOrders() throws Exception{
+    	try{
+    		
+    		element = BaseClass.driver.findElement(By.xpath(".//a[contains(@title, 'Back to orders')]"));
+            Log.info("The Element" +element.getTagName().toString()+ "  is found on the Page teted");
+            
+    	}catch (Exception e){
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		throw(e);
+       		}
+       	return element;
+        }
+	
+	public static WebElement text_TotalPriceOrderSummaryPage() throws Exception{
+    	try{
+    		
+    		element = BaseClass.driver.findElement(By.xpath(".//*[@id= 'total_price']"));
+            Log.info("The Element" +element.getText().toString()+ "  is found on the Page teted");
+            
+    	}catch (Exception e){
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		throw(e);
+       		}
+       	return element;
+        }
+	
+	
 		
+			public static WebElement link_PDFInvoiceDownload() throws Exception{
+    	try{
+    		
+    		element = BaseClass.driver.findElement(By.xpath("(.//a[contains(@title, 'Invoice')])[1]"));
+            Log.info("The Element" +element.getTagName().toString()+ "  is found on the Page teted");
+            
+    	}catch (Exception e){
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		throw(e);
+       		}
+       	return element;
+        }
+			
 	public boolean searchClothes(String word) throws Exception {
-		boolean result = false;
+		result = false;
 		PageMyAccount.input_search().sendKeys(word);
 		pathToScreenshot=Utils.takeScreenshot(driver);
 	     pdfgenerator.PDFcontent("Entered the keyword 'Dress' to search ", pathToScreenshot);
@@ -398,7 +441,7 @@ public class PageMyAccount extends BaseClass{
 	}
 
 	public boolean shippingClothes() throws Exception {
-		boolean result = false;
+		result = false;
 		String word = Utils.configProp().getProperty("keyWordSearch").toString();
 		searchClothes(word);
 		
@@ -416,6 +459,7 @@ public class PageMyAccount extends BaseClass{
 		
 		Thread.sleep(2000L);
 		
+		BaseClass.auxValue=text_TotalPriceOrderSummaryPage().getText();
 		PageMyAccount.ScrollDownClickOnButton_summaryProceedToCheckout();
 		
 		pathToScreenshot=Utils.takeScreenshot(driver);
@@ -458,17 +502,33 @@ public class PageMyAccount extends BaseClass{
 		}
 		
 		Thread.sleep(2000L);
-		PageMyAccount.button_linkUserAccount().click();
+		//PageMyAccount.button_linkUserAccount().click();
 		
 		return result;
 		
 	}
 	
+	public boolean downloadPDFInvoice() throws Exception {
+		link_BackToOrders().click();
+		//String totalPRice = BaseClass.auxValue;
+		
+		String pathDownloadDir = Utils.configProp().getProperty("pathDownload").toString();
+		
+		link_PDFInvoiceDownload().click();
+		
+		File pdfFile = Functions.getLatestFilefromDir(pathDownloadDir);
+		if (pdfFile.getName().contains("IN")) {
+			result = true;
+		}else {
+			result = false;
+		}
+		
+		return result;
+	}
 	
 	public static boolean verifyDownloadedFile(String stringLocationFolder) throws InterruptedException {
         File directory = new File(stringLocationFolder);
-
-        boolean  result1=  false;
+        result=  false;
         File[] filesList =null;
     
                 filesList =  directory.listFiles();
@@ -476,10 +536,10 @@ public class PageMyAccount extends BaseClass{
                 	
                 	if(file.getName().contains("IN127609.pdf")) {
                                     
-                    	result1 = true;
+                    	result = true;
                     }
                 }
-				return result1;
+				return result;
                 
                 
                 

@@ -74,6 +74,32 @@ public class Test_PageMyAccountOrderShipClothes {
 		  }
 			
 	  }
+	  
+	  @Test
+	  public void TestDownloadInvoice() throws Exception {
+		  try{
+			  result = false;
+		boolean loginResult	=  pagelogin.LoginIntoMyStore(Utils.configProp().getProperty("user").toString(),Utils.configProp().getProperty("passwd").toString());
+			  
+		if(loginResult == true) {
+			pagemyaccount.shippingClothes();
+			result=pagemyaccount.downloadPDFInvoice();
+			 
+		}
+					  
+			
+			if(result == true) {
+				  ExcelUtils.setCellData("Passed", iTestCaseRow, Constant.Col_SetResultOrderClothes);  
+			  }
+
+		  }catch (Exception e){
+			 ExcelUtils.setCellData("Failed", iTestCaseRow, Constant.Col_SetResultOrderClothes);
+			 Utils.takeScreenshot(driver);
+			  Log.error(e.getMessage());
+			  throw (e);
+		  }
+			
+	  }
 	  @AfterMethod
 	  public void afterMethod() throws Exception {
 		   Log.endTestCase(sTestCaseName);
