@@ -3,13 +3,14 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.alphasense.Testautomation.tests.Test_PageCreateAnAccount">
+      <class name="com.alphasense.Testautomation.tests.Test_PageMyAccountOrderShipClothes">
         <methods>
+          <include name="TestShippingClothes"/>
           <include name="beforeMethod"/>
-          <include name="TearDown"/>
-          <include name="TestMethod"/>
+          <include name="TestDownloadInvoice"/>
+          <include name="afterMethod"/>
         </methods>
-      </class> <!-- com.alphasense.Testautomation.tests.Test_PageCreateAnAccount -->
+      </class> <!-- com.alphasense.Testautomation.tests.Test_PageMyAccountOrderShipClothes -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
