@@ -51,9 +51,11 @@ public class PDFGenerator {
 		
 		document = new Document(PageSize.A4, 50, 50, 50, 50);
 		document.setPageSize(PageSize.A4);
-		new File("./report/").mkdirs();
-		String path= Utils.configProp().getProperty("Path_ScreenShot").toString();
-		PdfWriter.getInstance(document, new FileOutputStream((path+textTestCase+"_"+System.currentTimeMillis() +"_alpha-sense-evidencia.pdf")));
+		File file = new File(".//src//main//report//"+textTestCase);
+		file.mkdir();
+		String pathtoFolder=file.getAbsolutePath().toString();
+		//String path= Utils.configProp().getProperty("Path_ScreenShot").toString();
+		PdfWriter.getInstance(document, new FileOutputStream((pathtoFolder+"//"+textTestCase+""+"_alpha-sense-evidencia.pdf")));
 		
 		document.open();
 
@@ -151,6 +153,7 @@ public class PDFGenerator {
 			image.setBorderWidth(1f);
 			document.add(image);
 			 Files.deleteIfExists(Paths.get(imagepath));
+			 
 			document.close();
 		} else {
 			Font colorPassed = new Font();

@@ -52,7 +52,7 @@ public class Test_PageInvalidLogin{
 	        }
 	  
 	  @Test
-	  public void TestMethod() throws Exception {
+	  public void TestMethodInvalidLogin() throws Exception {
 		  try{
 			  
 			 result=PageLogin.InvalidLoginIntoMyStore(Utils.configProp().getProperty("user").toString(), Utils.configProp().getProperty("invalidPass").toString());

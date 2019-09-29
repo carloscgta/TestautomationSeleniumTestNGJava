@@ -12,7 +12,8 @@ import org.testng.annotations.Test;
 
 import com.alphasense.Testautomation.pages.BaseClass;
 import com.alphasense.Testautomation.pages.PageLogin;
-import com.alphasense.Testautomation.utility.Constant;
+import 
+com.alphasense.Testautomation.utility.Constant;
 import com.alphasense.Testautomation.utility.ExcelUtils;
 import com.alphasense.Testautomation.utility.Log;
 import com.alphasense.Testautomation.utility.PDFGenerator;
@@ -26,6 +27,7 @@ public class Test_PageLogin {
 	public static String sTestCaseName;
 	public static int iTestCaseRow;
 	public static boolean result;
+	PageLogin pagelogin = new PageLogin(driver);
 	
 	PDFGenerator pdfgenerator = new PDFGenerator();
 
@@ -63,7 +65,7 @@ public class Test_PageLogin {
 	  @Test
 	  public void TestMethod() throws Exception {
 		  try{
-			 result=PageLogin.DoLogin(iTestCaseRow);;
+			 result=pagelogin.DoLogin(iTestCaseRow);;
 			 
 			
 			 Assert.assertTrue(result, "Login should be successful, but actually wasn't.");

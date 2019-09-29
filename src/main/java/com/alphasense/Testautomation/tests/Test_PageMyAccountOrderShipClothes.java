@@ -61,8 +61,7 @@ public class Test_PageMyAccountOrderShipClothes {
 			result=pagemyaccount.shippingClothes();
 			 Assert.assertTrue(result, "Shipping confirmation page, check the screenshot in "+BaseClass.pathToScreenshot);
 		}
-					  
-			
+				
 			if(result == true) {
 				  ExcelUtils.setCellData("Passed", iTestCaseRow, Constant.Col_SetResultOrderClothes);  
 			  }

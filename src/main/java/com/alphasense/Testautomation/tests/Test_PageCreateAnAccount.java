@@ -36,7 +36,7 @@ public class Test_PageCreateAnAccount{
 		  System.out.println( "The test report can be found in:"+Utils.configProp().getProperty("Path_ScreenShot").toString());
 		  
 		  	DOMConfigurator.configure("log4j.xml");
-		  	sTestCaseName = this.toString();
+		  	
 			sTestCaseName = Utils.getTestCaseName(this.toString());
 			String pathtoData= Utils.configProp().getProperty("Path_TestData").toString();
 			ExcelUtils.setExcelFile(pathtoData, "Test_PageCreateAnAccount");
@@ -44,6 +44,8 @@ public class Test_PageCreateAnAccount{
 			Log.startTestCase(sTestCaseName);
 			
 		  driver = Utils.OpenBrowser(iTestCaseRow);
+		  
+		  //Create the PDF file with the test class name
 		  pdfgenerator.startPDF(sTestCaseName);
 		
 			new BaseClass(driver);  
@@ -73,7 +75,7 @@ public class Test_PageCreateAnAccount{
 		   Log.endTestCase(sTestCaseName);
 		   pdfgenerator.closePDF(result);
 		   if(driver != null) {
-			driver.quit();
+			driver.close();
 		   }
 		
 	  		}

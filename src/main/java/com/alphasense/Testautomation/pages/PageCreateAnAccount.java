@@ -415,7 +415,7 @@ public class PageCreateAnAccount extends BaseClass {
 		
 	     
 		 if(button_LoginIn().isDisplayed()) {
-			// pathToScreenshot=Utils.takeScreenshot(driver);
+			pathToScreenshot=Utils.takeScreenshot(driver);
 		     pdfgenerator.PDFcontent("Click on Sigin Link", pathToScreenshot);
 		     Files.deleteIfExists(Paths.get(pathToScreenshot));
 		 	Thread.sleep(2000L);

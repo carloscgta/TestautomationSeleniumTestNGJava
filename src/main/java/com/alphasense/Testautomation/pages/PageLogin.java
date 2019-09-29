@@ -4,6 +4,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Reporter;
@@ -30,8 +31,8 @@ public class PageLogin extends BaseClass {
 	public static WebElement link_SignIn() throws Exception{
     	try{
            
-    		element = driver.findElement(By.xpath("//*[contains(@class, 'header_user_info')]"));
-            
+    		element = driver.findElement(By.xpath(".//a[contains(@title, 'Log in to your customer account')]"));
+    		
     		//element = driver.findElement(By.xpath(Utils.configProperties("PageLogin").getProperty("link_Login").toString()));
             
             Log.info("The Element" + element.getText()+ "  is found on the Page");
@@ -136,12 +137,13 @@ public class PageLogin extends BaseClass {
        	return element;
         }
 	 public static String pathToScreenshot;
-	 public static boolean DoLogin(int iTestCaseRow) throws Exception{
+	 public boolean DoLogin(int iTestCaseRow) throws Exception{
 		  pathToScreenshot=Utils.takeScreenshot(driver);
 		  pdfgenerator.PDFcontent("Home Page - Click in Sign to go to the Login Page", pathToScreenshot);
 	     Files.deleteIfExists(Paths.get(pathToScreenshot));
-		 	link_SignIn().click();
-		 	Thread.sleep(2000L);
+
+	     	link_SignIn().click();
+	    	 Thread.sleep(2000L);
 		 	Thread.sleep(2000L);
 		 	Thread.sleep(2000L);
 		   	// Storing the UserName in to a String variable and Getting the UserName from Test Data Excel sheet
@@ -183,9 +185,11 @@ public class PageLogin extends BaseClass {
 	         }else {
 	        	 bResult = false;
 	        	 ExcelUtils.setCellData("Failed", iTestCaseRow, Constant.Col_Result);
+	        	 JavascriptExecutor jse = (JavascriptExecutor) driver;
+		         jse.executeScript("arguments[0].style.border='3px solid red'", h1classtext_AthenticationErrorMessage());
 	         }
 	         
-	         //Utils.driver.wait(15);
+	         
 	         Log.info("Click action is performed on Submit button");
 			
 	         return bResult;
@@ -196,16 +200,12 @@ public class PageLogin extends BaseClass {
 		   Thread.sleep(2000L);
 	         Thread.sleep(2000L);
 	         Thread.sleep(2000L);
+	         
 		 	link_SignIn().click();
 		    Thread.sleep(2000L);
 	         Thread.sleep(2000L);
 	         Thread.sleep(2000L);
-	         Thread.sleep(2000L);
-	         Thread.sleep(2000L);
-	         Thread.sleep(2000L);
-	         Thread.sleep(2000L);
-	         Thread.sleep(2000L);
-	         Thread.sleep(2000L);
+	  
 	         driver.navigate().refresh();
 	         
 	        input_email().sendKeys(user); 
@@ -246,8 +246,8 @@ public class PageLogin extends BaseClass {
 	        
 	       
 	        pathToScreenshot=Utils.takeScreenshot(driver);
-		     pdfgenerator.PDFcontent("Performing the Login", pathToScreenshot);
-		     Files.deleteIfExists(Paths.get(pathToScreenshot));
+		    pdfgenerator.PDFcontent("Performing the Login", pathToScreenshot);
+		    Files.deleteIfExists(Paths.get(pathToScreenshot));
 	         
 	        button_SignIn().click();
 	        Utils.takeScreenshot(driver); 
@@ -258,6 +258,8 @@ public class PageLogin extends BaseClass {
 	        	 pathToScreenshot=Utils.takeScreenshot(driver);
 			     pdfgenerator.PDFcontent("Validation of the error message", pathToScreenshot);
 			     Files.deleteIfExists(Paths.get(pathToScreenshot));
+			     JavascriptExecutor jse = (JavascriptExecutor) driver;
+		         jse.executeScript("arguments[0].style.border='3px solid red'", h1classtext_AthenticationErrorMessage());
 		         
 	         }else {
 	        	 bResult = true;
