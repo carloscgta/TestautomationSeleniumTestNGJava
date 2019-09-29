@@ -28,16 +28,16 @@ public static void endTestCase(String sTestCaseName){
 public static void info(String message) {
        Log.info(message);
        }
-public static void warn(String message) {
+public static void warn(String message,Exception e) {
    Log.warn(message);
    }
-public static void error(String message) {
+public static void error(String message, Exception e) {
    Log.error(message);
    }
-public static void fatal(String message) {
+public static void fatal(String message, Exception e) {
    Log.fatal(message);
    }
-public static void debug(String message) {
+public static void debug(String message, Exception e) {
    Log.debug(message);
    
 	

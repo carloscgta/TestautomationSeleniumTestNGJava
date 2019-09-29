@@ -37,7 +37,7 @@ public class PageLogin extends BaseClass {
             
             Log.info("The Element" + element.getText()+ "  is found on the Page");
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page",e);
        		throw(e);
        		}
        	return element;
@@ -52,7 +52,7 @@ public class PageLogin extends BaseClass {
             
             Log.info("The Element" + element.getText()+ "  is found on the Page");
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -67,7 +67,7 @@ public class PageLogin extends BaseClass {
             
             Log.info("The Element" +element.getText()+ "  is found on the Page");
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -82,7 +82,7 @@ public class PageLogin extends BaseClass {
             
             Log.info("The Element" +element.getText()+ "  is found on the Page");
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page",e);
        		throw(e);
        		}
        	return element;
@@ -99,7 +99,7 @@ public class PageLogin extends BaseClass {
             
             Log.info("The Element" +element.getText()+ "  was found on the Page");
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page",e);
        		throw(e);
        		}
        	return element;
@@ -115,7 +115,7 @@ public class PageLogin extends BaseClass {
             
             Log.info("The Element" +element.getText()+ " was found on the Page");
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -131,7 +131,8 @@ public class PageLogin extends BaseClass {
             
             Log.info("The Element" +element.getText()+ " was found on the Page");
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page",e);
+       		Log.error("Falha", e);
        		throw(e);
        		}
        	return element;
@@ -266,7 +267,6 @@ public class PageLogin extends BaseClass {
 	        	
 	         }
 
-			
 	         return bResult;
 	     }
 }

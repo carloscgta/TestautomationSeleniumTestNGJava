@@ -70,7 +70,7 @@ public class Test_PageMyAccountSearchClothes {
 		  }catch (Exception e){
 			 ExcelUtils.setCellData("Failed", iTestCaseRow, Constant.Col_SetResultOrderClothes);
 			 Utils.takeScreenshot(driver);
-			  Log.error(e.getMessage());
+			  Log.error("",e);
 			  throw (e);
 		  }
 			

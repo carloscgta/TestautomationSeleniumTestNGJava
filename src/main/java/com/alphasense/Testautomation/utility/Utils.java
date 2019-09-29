@@ -51,7 +51,7 @@ public static WebDriver OpenBrowser(int iTestCaseRow) throws Exception{
 	    driver.manage().window().maximize();
 		
 	}catch (Exception e){
-		Log.error("Class Utils | Method OpenBrowser | Exception desc : "+e.getMessage());
+		Log.error("Class Utils | Method OpenBrowser | Exception desc : ", e);
 	}
 	return driver;
 }
@@ -65,7 +65,7 @@ public static String getTestCaseName(String sTestCase)throws Exception{
 		value = value.substring(posi + 1);
 		return value;
 			}catch (Exception e){
-		Log.error("Class Utils | Method getTestCaseName | Exception desc : "+e.getMessage());
+		Log.error("Class Utils | Method getTestCaseName | Exception desc : ", e);
 		throw (e);
 				}
 		}
@@ -94,7 +94,7 @@ public static String getTestCaseName(String sTestCase)throws Exception{
 
 					
 				} catch (Exception e){
-					Log.error("Class Utils | Method takeScreenshot | Exception occured while capturing ScreenShot : "+e.getMessage());
+					Log.error("Class Utils | Method takeScreenshot | Exception occured while capturing ScreenShot : ", e);
 					throw new Exception();
 				}
 				return pathToScreenshot;

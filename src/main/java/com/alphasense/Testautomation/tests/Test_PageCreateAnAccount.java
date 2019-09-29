@@ -65,7 +65,7 @@ public class Test_PageCreateAnAccount{
 
 		  }catch (Exception e){
 			  ExcelUtils.setCellData("Failed", iTestCaseRow, Constant.Col_ResultResponse);  
-			  Log.error(e.getMessage());
+			  Log.error("Failed",e);
 			  throw (e);
 		  }
 			

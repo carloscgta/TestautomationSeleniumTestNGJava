@@ -77,10 +77,9 @@ public class Test_PageLogin {
 		  }catch (Exception e){
 			 ExcelUtils.setCellData("Failed", iTestCaseRow, Constant.Col_Result);
 			
-			  Log.error(e.getMessage());
+			  Log.error("Failed", e);
 			  throw (e);
 		  }
-			
 	  }
 	  @AfterMethod
 	  public void afterMethod() throws Exception {

@@ -38,6 +38,7 @@ public class Test_PageInvalidLogin{
 		  System.out.println( "The test report can be found in:"+Utils.configProp().getProperty("Path_ScreenShot").toString());
 		  
 			DOMConfigurator.configure("log4j.xml");
+			
 		  	sTestCaseName = this.toString();
 			sTestCaseName = Utils.getTestCaseName(this.toString());
 			String pathtoData= Utils.configProp().getProperty("Path_TestData").toString();
@@ -64,8 +65,7 @@ public class Test_PageInvalidLogin{
 
 		  }catch (Exception e){
 			ExcelUtils.setCellData("Fail", iTestCaseRow, Constant.Col_Result);
-			
-			  Log.error(e.getMessage());
+			 Log.error("Falha",e);
 			  throw (e);
 		  }
 			
@@ -73,6 +73,7 @@ public class Test_PageInvalidLogin{
 	  @AfterMethod
 	  public void afterMethod() throws Exception {
 		   Log.endTestCase(sTestCaseName);
+		  
 		   pdfgenerator.closePDF(result);
 		   driver.close();
 	  		}

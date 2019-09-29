@@ -71,7 +71,7 @@ public static int getRowContains(String sTestCaseName, int colNum) throws Except
 		}
 		return i;
 			}catch (Exception e){
-		Log.error("Class ExcelUtil | Method getRowContains | Exception desc : " + e.getMessage());
+		Log.error("Class ExcelUtil | Method getRowContains | Exception desc : ", e);
 		throw(e);
 		}
 	}
@@ -82,7 +82,7 @@ public static int getRowUsed() throws Exception {
 		Log.info("Total number of Row used return as < " + RowCount + " >.");		
 		return RowCount;
 	}catch (Exception e){
-		Log.error("Class ExcelUtil | Method getRowUsed | Exception desc : "+e.getMessage());
+		Log.error("Class ExcelUtil | Method getRowUsed | Exception desc : ", e);
 		System.out.println(e.getMessage());
 		throw (e);
 	}

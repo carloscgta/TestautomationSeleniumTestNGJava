@@ -96,7 +96,7 @@ For each test case, the framework generate a PDF file with the screenshots with 
 
     </profiles>
 
-#Running with maven command line and sending by parameter the environment url
+# Running with maven command line and set the Environment
 
 Below there is how to get the parameter from Maven command line to set the environment URL to be executed the automated tests:
 String url = System.getProperty("env.url").toString();

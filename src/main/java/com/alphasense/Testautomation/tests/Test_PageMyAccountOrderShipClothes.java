@@ -69,7 +69,7 @@ public class Test_PageMyAccountOrderShipClothes {
 		  }catch (Exception e){
 			 ExcelUtils.setCellData("Failed", iTestCaseRow, Constant.Col_SetResultOrderClothes);
 			 Utils.takeScreenshot(driver);
-			  Log.error(e.getMessage());
+			  Log.error("",e);
 			  throw (e);
 		  }
 			
@@ -94,7 +94,7 @@ public class Test_PageMyAccountOrderShipClothes {
 		  }catch (Exception e){
 			 ExcelUtils.setCellData("Failed", iTestCaseRow, Constant.Col_SetResultOrderClothes);
 			 Utils.takeScreenshot(driver);
-			  Log.error(e.getMessage());
+			  Log.error("", e);
 			  throw (e);
 		  }
 			
