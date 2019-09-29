@@ -37,7 +37,7 @@ public class PageMyAccount extends BaseClass{
             Log.info("The Element" +element.getText()+ "  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -51,7 +51,7 @@ public class PageMyAccount extends BaseClass{
             Log.info("The Element" +element.getText()+ "  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+    		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -65,7 +65,7 @@ public class PageMyAccount extends BaseClass{
             Log.info("The Element" +element.getText()+ "  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+    		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -89,7 +89,7 @@ public class PageMyAccount extends BaseClass{
             Log.info("The Element" +element.getTagName()+ "  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getTagName()+ "  was not found on the Page");
+    		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	
@@ -112,7 +112,7 @@ public class PageMyAccount extends BaseClass{
             Log.info("The Element" +element.getTagName()+ "  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getTagName()+ "  was not found on the Page");
+    		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	
@@ -136,7 +136,7 @@ public class PageMyAccount extends BaseClass{
               Log.info("The Element" +element.getTagName().toString()+ "  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+    		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -182,7 +182,7 @@ public class PageMyAccount extends BaseClass{
             Log.info("The Element   is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element   was not found on the Page");
+    		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	//return element;
@@ -202,7 +202,7 @@ public class PageMyAccount extends BaseClass{
             Log.info("The Element is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element  was not found on the Page");
+    		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -223,7 +223,7 @@ public class PageMyAccount extends BaseClass{
             Log.info("The Element  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element  was not found on the Page");
+    		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        //	return element;
@@ -246,7 +246,7 @@ public class PageMyAccount extends BaseClass{
             Log.info("The Element is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element  was not found on the Page");
+    		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -266,7 +266,7 @@ public class PageMyAccount extends BaseClass{
             Log.info("The Element  is found on the Page");
             
     	}catch (Exception e){
-       		Log.error("The Element  was not found on the Page");
+    		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -286,7 +286,7 @@ public class PageMyAccount extends BaseClass{
             Log.info("The Element  is found on the Page");
             
     	}catch (Exception e){
-       		Log.error("The Element  was not found on the Page");
+    		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -303,7 +303,7 @@ public class PageMyAccount extends BaseClass{
             Log.info("The Element  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element  was not found on the Page");
+    		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -317,7 +317,7 @@ public class PageMyAccount extends BaseClass{
             Log.info("The Element  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element was not found on the Page");
+    		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -331,7 +331,7 @@ public class PageMyAccount extends BaseClass{
             Log.info("The Element is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element  was not found on the Page");
+    		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -346,7 +346,7 @@ public class PageMyAccount extends BaseClass{
             Log.info("The Element is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element  was not found on the Page");
+    		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -374,7 +374,7 @@ public class PageMyAccount extends BaseClass{
             Log.info("The Element is found on the Page");
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+    		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return count;
@@ -387,7 +387,7 @@ public class PageMyAccount extends BaseClass{
             Log.info("The Element" +element.getTagName().toString()+ "  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+    		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -400,7 +400,7 @@ public class PageMyAccount extends BaseClass{
             Log.info("The Element" +element.getText().toString()+ "  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+    		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -415,7 +415,7 @@ public class PageMyAccount extends BaseClass{
             Log.info("The Element" +element.getTagName().toString()+ "  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+    		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -527,7 +527,7 @@ public class PageMyAccount extends BaseClass{
 		if (pdfFile.getName().contains("IN")) {
 			result = true;
 			
-		System.out.println("THe file can found on this directory: "+pdfFile.getAbsolutePath().toString());
+		System.out.println("THe file can be found on this directory: "+pdfFile.getAbsolutePath().toString());
 			
 		}else {
 			result = false;

@@ -26,6 +26,7 @@ public class Test_PageInvalidLogin{
 	public static String sTestCaseName;
 	public static int iTestCaseRow;
 	PDFGenerator pdfgenerator = new PDFGenerator();
+	PageLogin pagelogin = new PageLogin(driver);
 	public static boolean result;
 
 	  @BeforeMethod
@@ -56,7 +57,7 @@ public class Test_PageInvalidLogin{
 	  public void TestMethodInvalidLogin() throws Exception {
 		  try{
 			  
-			 result=PageLogin.InvalidLoginIntoMyStore(Utils.configProp().getProperty("user").toString(), Utils.configProp().getProperty("invalidPass").toString());
+			 result=pagelogin.InvalidLoginIntoMyStore(Utils.configProp().getProperty("user").toString(), Utils.configProp().getProperty("invalidPass").toString());
 			 
 			 Assert.assertFalse(result, "Login shouldn't be successful, but actually was");
 			if(result == false) {

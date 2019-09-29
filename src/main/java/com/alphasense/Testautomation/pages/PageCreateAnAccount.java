@@ -6,9 +6,7 @@ import java.nio.file.Paths;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.Wait;
 
 import com.alphasense.Testautomation.utility.Constant;
 import com.alphasense.Testautomation.utility.ExcelUtils;
@@ -38,7 +36,7 @@ public class PageCreateAnAccount extends BaseClass {
             
             Log.info("The Element" +element.getText()+ "  is found on the Page teted");
     	}catch (Exception e){
-       		//Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -53,7 +51,7 @@ public class PageCreateAnAccount extends BaseClass {
             
             Log.info("The Element" +element.getText()+ "  is found on the Page");
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -83,7 +81,7 @@ public class PageCreateAnAccount extends BaseClass {
             Log.info("The Element" +element.getText()+ "  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page",e);
        		throw(e);
        		}
        	return element;
@@ -96,7 +94,7 @@ public class PageCreateAnAccount extends BaseClass {
             Log.info("The Element" +element.getText()+ "  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -109,7 +107,7 @@ public class PageCreateAnAccount extends BaseClass {
             Log.info("The Element" +element.getText()+ "  is found on the Page teted");
             
     	}catch (Exception e){
-       		//Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -122,7 +120,7 @@ public class PageCreateAnAccount extends BaseClass {
             Log.info("The Element" +element.getText()+ "  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -135,7 +133,7 @@ public class PageCreateAnAccount extends BaseClass {
             Log.info("The Element" +element.getText()+ "  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -154,7 +152,7 @@ public class PageCreateAnAccount extends BaseClass {
    		
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
       
@@ -174,7 +172,7 @@ public class PageCreateAnAccount extends BaseClass {
     		
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
       
@@ -191,7 +189,7 @@ public class PageCreateAnAccount extends BaseClass {
     		
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
       
@@ -204,7 +202,7 @@ public class PageCreateAnAccount extends BaseClass {
             Log.info("The Element" +element.getText()+ "  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -219,7 +217,7 @@ public class PageCreateAnAccount extends BaseClass {
             Log.info("The Element" +element.getText()+ "  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -232,7 +230,7 @@ public class PageCreateAnAccount extends BaseClass {
             Log.info("The Element" +element.getText()+ "  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -246,7 +244,7 @@ public class PageCreateAnAccount extends BaseClass {
             Log.info("The Element" +element.getText()+ "  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -259,7 +257,7 @@ public class PageCreateAnAccount extends BaseClass {
             Log.info("The Element" +element.getText()+ "  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -272,7 +270,7 @@ public class PageCreateAnAccount extends BaseClass {
             Log.info("The Element" +element.getText()+ "  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -285,7 +283,7 @@ public class PageCreateAnAccount extends BaseClass {
             Log.info("The Element" +element.getText()+ "  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -299,7 +297,7 @@ public class PageCreateAnAccount extends BaseClass {
             Log.info("The Element" +element.getText()+ "  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -317,7 +315,7 @@ public class PageCreateAnAccount extends BaseClass {
             Log.info("The Element" +element.getText()+ "  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
  
@@ -330,7 +328,7 @@ public class PageCreateAnAccount extends BaseClass {
             Log.info("The Element" +element.getText()+ "  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element  was not found on the Page");
+       		Log.error("The Element  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -348,7 +346,7 @@ public class PageCreateAnAccount extends BaseClass {
             Log.info("The Element" +element.getText()+ "  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
  
@@ -361,7 +359,7 @@ public class PageCreateAnAccount extends BaseClass {
             Log.info("The Element" +element.getText()+ "  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -374,7 +372,7 @@ public class PageCreateAnAccount extends BaseClass {
             Log.info("The Element" +element.getText()+ "  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -387,7 +385,7 @@ public class PageCreateAnAccount extends BaseClass {
             Log.info("The Element" +element.getText()+ "  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;
@@ -400,7 +398,7 @@ public class PageCreateAnAccount extends BaseClass {
             Log.info("The Element" +element.getText()+ "  is found on the Page teted");
             
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page");
+       		Log.error("The Element" +element.getText()+ "  was not found on the Page", e);
        		throw(e);
        		}
        	return element;

@@ -235,7 +235,7 @@ public class PageLogin extends BaseClass {
 	         return bResult;
 	     }
 	
-	 public static boolean InvalidLoginIntoMyStore(String user, String password) throws Exception{
+	 public boolean InvalidLoginIntoMyStore(String user, String password) throws Exception{
 	     	
 	     	
 		 	link_SignIn().click();
