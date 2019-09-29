@@ -55,7 +55,7 @@ public class PDFGenerator {
 		file.mkdir();
 		String pathtoFolder=file.getAbsolutePath().toString();
 		//String path= Utils.configProp().getProperty("Path_ScreenShot").toString();
-		PdfWriter.getInstance(document, new FileOutputStream((pathtoFolder+"//"+textTestCase+""+"_alpha-sense-evidence.pdf")));
+		PdfWriter.getInstance(document, new FileOutputStream((pathtoFolder+"//"+textTestCase+""+"_alpha-sense_TestReportEvidence.pdf")));
 		
 		document.open();
 
