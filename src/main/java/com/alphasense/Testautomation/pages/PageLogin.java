@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.Reporter;
+
 
 import com.alphasense.Testautomation.utility.Constant;
 import com.alphasense.Testautomation.utility.ExcelUtils;
@@ -18,9 +18,10 @@ import com.alphasense.Testautomation.utility.Utils;
 
 
 public class PageLogin extends BaseClass {
-
+	
 	private static WebElement element = null;
 	public static PDFGenerator pdfgenerator = new PDFGenerator();
+
 	
 	public PageLogin(WebDriver driver) {
 		super(driver);
@@ -31,13 +32,13 @@ public class PageLogin extends BaseClass {
 	public static WebElement link_SignIn() throws Exception{
     	try{
            
-    		element = driver.findElement(By.xpath(".//a[contains(@title, 'Log in to your customer account')]"));
+    		element =  driver.findElement(By.xpath(".//a[contains(@title, 'Log in to your customer account')]"));
     		
     		//element = driver.findElement(By.xpath(Utils.configProperties("PageLogin").getProperty("link_Login").toString()));
             
             Log.info("The Element" + element.getText()+ "  is found on the Page");
     	}catch (Exception e){
-       		Log.error("The Element" +element.getText()+ "  was not found on the Page",e);
+       		//Log.error("The Element" +element.getText()+ "  was not found on the Page",e);
        		throw(e);
        		}
        	return element;
@@ -73,7 +74,7 @@ public class PageLogin extends BaseClass {
        	return element;
         }
 	
-	public static WebElement button_SignIn() throws Exception{
+	public static  WebElement button_SignIn() throws Exception{
     	try{
            
     		element = driver.findElement(By.xpath("//*[@id='SubmitLogin']"));
@@ -106,7 +107,7 @@ public class PageLogin extends BaseClass {
         }
 	
 
-	public static WebElement button_OrderHistoryDetails() throws Exception{
+	public static  WebElement button_OrderHistoryDetails() throws Exception{
     	try{
            
     		element = driver.findElement(By.xpath("//*[@id='center_column']/div/div[1]/ul/li[1]/a/span"));
@@ -196,35 +197,21 @@ public class PageLogin extends BaseClass {
 	         return bResult;
 	     }
  	 
-	 public boolean LoginIntoMyStore(String user, String password) throws Exception{
+	 public static boolean LoginIntoMyStore(String user, String password) throws Exception{
 	     	
-		   Thread.sleep(2000L);
-	         Thread.sleep(2000L);
-	         Thread.sleep(2000L);
-	         
-		 	link_SignIn().click();
-		    Thread.sleep(2000L);
-	         Thread.sleep(2000L);
-	         Thread.sleep(2000L);
+
+		 	PageLogin.link_SignIn().click();
+
 	  
-	         driver.navigate().refresh();
-	         
-	        input_email().sendKeys(user); 
-	        input_password().sendKeys(password);
-	        Utils.takeScreenshot(driver);
-	      
-	        pathToScreenshot=Utils.takeScreenshot(driver);
-		     pdfgenerator.PDFcontent("Performing the Login", pathToScreenshot);
-		     Files.deleteIfExists(Paths.get(pathToScreenshot));
-	         
-	        button_SignIn().click();
-	        Utils.takeScreenshot(driver); 
+	         PageLogin.input_email().sendKeys(user); 
+	         PageLogin.input_password().sendKeys(password);
+	        	         
+	         PageLogin.button_SignIn().click();
+	        
 	       
-	        if(button_OrderHistoryDetails().isDisplayed()){
+	        if(PageLogin.button_OrderHistoryDetails().isDisplayed()){
 	        	 bResult = true;
-	        	 pathToScreenshot=Utils.takeScreenshot(driver);
-			     pdfgenerator.PDFcontent("Validation of the error message", pathToScreenshot);
-			     Files.deleteIfExists(Paths.get(pathToScreenshot));
+	        	 
 		         
 	         }else {
 	        	 bResult = false;
@@ -251,8 +238,7 @@ public class PageLogin extends BaseClass {
 		    Files.deleteIfExists(Paths.get(pathToScreenshot));
 	         
 	        button_SignIn().click();
-	        Utils.takeScreenshot(driver); 
-	       
+	      
 	        
 	        if(h1classtext_AthenticationErrorMessage().isDisplayed()){
 	        	 bResult = false;

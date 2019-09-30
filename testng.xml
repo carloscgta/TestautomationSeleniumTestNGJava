@@ -9,6 +9,7 @@
       <class name="com.alphasense.Testautomation.tests.Test_PageCreateAnAccount"/>
       <class name="com.alphasense.Testautomation.tests.Test_PageMyAccountOrderShipClothes"/>
       <class name="com.alphasense.Testautomation.tests.Test_PageMyAccountSearchClothes"/>
+       <class name="com.alphasense.Testautomation.tests.Test_DownloadPDFInvoice"/>
     </classes>
 
 

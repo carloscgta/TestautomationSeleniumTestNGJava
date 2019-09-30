@@ -42,7 +42,7 @@ public class PDFGenerator {
 	public static Document document = new Document();
 	public static String path;
 		
-
+	Utils utils = new Utils();
 	/*
 	 * Method responsible to start the pdf file
 	 *
@@ -124,6 +124,18 @@ public class PDFGenerator {
 
 	}
 	
+	public void PDFaddText(String conteudoTestCaseTexts) throws Exception, DocumentException {
+
+		document.newPage();
+		Font color = new Font();
+		color.setFamily("Courier");
+		color.setStyle(Font.BOLD);
+		color.setSize(15);
+		color.setColor(BaseColor.BLUE);
+
+		document.add(new Paragraph(conteudoTestCaseTexts, color));
+		
+	}
 	
 /*
  * MEthod Responsible to close the pdf file
@@ -142,7 +154,7 @@ public class PDFGenerator {
 			document.add(new Paragraph("Status: " + "Failed", colorFailed));
 			document.add(new Paragraph("Evidência da falha: ", colorFailed));
 
-			String imagepath = Utils.takeScreenshot(BaseClass.driver);
+			String imagepath = utils.takeScreenshot(BaseClass.driver);
 			
 			Image image = Image.getInstance(imagepath);
 			float documentWidth = document.getPageSize().getWidth() - document.leftMargin() - document.rightMargin();

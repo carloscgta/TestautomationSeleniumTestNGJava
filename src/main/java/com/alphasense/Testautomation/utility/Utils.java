@@ -36,7 +36,7 @@ public static WebDriver OpenBrowser(int iTestCaseRow) throws Exception{
 		Log.info("New driver instantiated");
 	    driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	    Log.info("Implicit wait applied on the driver for 10 seconds");
-	    String uatlink = Utils.configProp().getProperty("uatlink").toString();
+	    String uatlink = configProp().getProperty("uatlink").toString();
 	    String url = System.getProperty("env.url").toString();
 	    System.out.println("URL UAT environment:"+url);
 	    if(url.isEmpty()) {
@@ -51,7 +51,7 @@ public static WebDriver OpenBrowser(int iTestCaseRow) throws Exception{
 	    driver.manage().window().maximize();
 		
 	}catch (Exception e){
-		Log.error("Class Utils | Method OpenBrowser | Exception desc : ", e);
+		Log.error("Class Utils | Method OpenBrowser | Exception desc : ",e);
 	}
 	return driver;
 }
@@ -79,8 +79,8 @@ public static String getTestCaseName(String sTestCase)throws Exception{
 				 prop.load(new FileReader(".//src//main//resources//config.uat.properties"));
 				
 		 	} catch (IOException e) {
-		 		
-		 		throw new Exception();
+		 		Log.error("Fail",e);
+		 		throw new Exception(e);
 		 	}
 			return prop;
 			 
@@ -95,7 +95,7 @@ public static String getTestCaseName(String sTestCase)throws Exception{
 					
 				} catch (Exception e){
 					Log.error("Class Utils | Method takeScreenshot | Exception occured while capturing ScreenShot : ", e);
-					throw new Exception();
+					throw new Exception(e);
 				}
 				return pathToScreenshot;
 			}

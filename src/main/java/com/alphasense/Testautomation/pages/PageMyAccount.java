@@ -17,10 +17,10 @@ import com.alphasense.Testautomation.utility.Utils;
 
 
 public class PageMyAccount extends BaseClass{
+	
 	private static WebElement element = null;
-	WebDriver driver;
-	PDFGenerator pdfgenerator = new PDFGenerator();
-	public String pathToScreenshot;
+	static PDFGenerator pdfgenerator = new PDFGenerator();
+	public static String pathToScreenshot;
 	
 	public static boolean result; 
 	
@@ -192,7 +192,7 @@ public class PageMyAccount extends BaseClass{
 	public static WebElement inputType_checkBoxAgreeWithTerms() throws Exception{
     	try{
     		//*[@id='uniform-cgv']
-    		Thread.sleep(2000L);
+    		
     		Functions.scrollToElement(By.xpath("//input[@id='cgv']"));
     		BaseClass.driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
     		Thread.sleep(2000L);
@@ -421,88 +421,89 @@ public class PageMyAccount extends BaseClass{
        	return element;
         }
 			
-	public boolean searchClothes(String word) throws Exception {
+	public static boolean searchClothes(String word) throws Exception {
 		result = false;
-		File file;
-		PageMyAccount.input_search().sendKeys(word);
-		pathToScreenshot=Utils.takeScreenshot(driver);
-	     pdfgenerator.PDFcontent("Entered the keyword 'Dress' to search ", pathToScreenshot);
-	     Files.deleteIfExists(Paths.get(pathToScreenshot));
 		
-		PageMyAccount.button_search().click();
-		Utils.takeScreenshot(driver);
+		input_search().sendKeys(word);
+	     button_search().click();
+			
 		
-		int countTotalDresses=PageMyAccount.elements_Dresses(word);
+		int countTotalDresses=elements_Dresses(word);
 		Integer intInstance = new Integer(countTotalDresses);      
 		String numberAsString = intInstance.toString();
 		
-		if(PageMyAccount.h1Label_searchResultCountText().getText().contains(numberAsString)) {
+		pathToScreenshot=Utils.takeScreenshot(BaseClass.driver);
+		  pdfgenerator.PDFcontent("Entered the keyword 'Dress' to search ", pathToScreenshot);
+		
+		if(h1Label_searchResultCountText().getText().contains(numberAsString)) {
 			result=true;
-			//BaseClass.pathToScreenshot = numberAsString;
+			pathToScreenshot=Utils.takeScreenshot( BaseClass.driver);
+			  pdfgenerator.PDFcontent("Entered the keyword 'Dress' to search ", pathToScreenshot);
+			 
 		}
 	
 		return result;
 		
 	}
 
-	public boolean shippingClothes() throws Exception {
+	public static boolean shippingClothes() throws Exception {
 		result = false;
 		String word = Utils.configProp().getProperty("keyWordSearch").toString();
 		searchClothes(word);
-		
-		pathToScreenshot=Utils.takeScreenshot(driver);
-	     pdfgenerator.PDFcontent("View the search result for 'Dress' keyword - and clicking in Add to Chart button", pathToScreenshot);
+		pathToScreenshot = "";
+		pathToScreenshot=Utils.takeScreenshot( BaseClass.driver);
+	    pdfgenerator.PDFcontent("View the search result for 'Dress' keyword - and clicking in Add to Chart button", pathToScreenshot);
 	     
-		Thread.sleep(2000L);
+		
 		
 		ClickONbutton_addToChart();
 		
-		Thread.sleep(2000L);
-		pathToScreenshot=Utils.takeScreenshot(driver);
+
+		pathToScreenshot=Utils.takeScreenshot( BaseClass.driver);
 	    pdfgenerator.PDFcontent("Click in Proceed to checkout ", pathToScreenshot);
 		
-		PageMyAccount.switchButton_proceedToCheckout().click();;
+		switchButton_proceedToCheckout().click();;
 		
-		Thread.sleep(2000L);
+	
 		
 		BaseClass.auxValue=text_TotalPriceOrderSummaryPage().getText();
-		PageMyAccount.ScrollDownClickOnButton_summaryProceedToCheckout();
+		ScrollDownClickOnButton_summaryProceedToCheckout();
 		
-		pathToScreenshot=Utils.takeScreenshot(driver);
+		pathToScreenshot=Utils.takeScreenshot( BaseClass.driver);
 	    pdfgenerator.PDFcontent("Summary screen - Click in Proceed to checkout", pathToScreenshot);
 
 		Thread.sleep(2000L);
-		PageMyAccount.button_addressProceedToCheckout();
+		button_addressProceedToCheckout();
 	
 		
-		pathToScreenshot=Utils.takeScreenshot(driver);
+		pathToScreenshot=Utils.takeScreenshot( BaseClass.driver);
 	    pdfgenerator.PDFcontent("Click in Check box agree with terms", pathToScreenshot);
 		Thread.sleep(2000L);
-		PageMyAccount.inputType_checkBoxAgreeWithTerms().click();
+		inputType_checkBoxAgreeWithTerms().click();
 
-		pathToScreenshot=Utils.takeScreenshot(driver);
+		pathToScreenshot=Utils.takeScreenshot( BaseClass.driver);
 	    pdfgenerator.PDFcontent("Click in proceed to checkout", pathToScreenshot);
 		Thread.sleep(2000L);
-		PageMyAccount.button_shippingProceedToCheckout();
+		button_shippingProceedToCheckout();
 	
 		
-		pathToScreenshot=Utils.takeScreenshot(driver);
+		pathToScreenshot=Utils.takeScreenshot( BaseClass.driver);
 	    pdfgenerator.PDFcontent("Click in button_payByBanwire", pathToScreenshot);
 		Thread.sleep(2000L);
-		PageMyAccount.button_payByBanwire().click();
+		button_payByBanwire().click();
 
 		
-		pathToScreenshot=Utils.takeScreenshot(driver);
+		pathToScreenshot=Utils.takeScreenshot( BaseClass.driver);
 	    pdfgenerator.PDFcontent("Click in IConfirmMyOrder", pathToScreenshot);
 		Thread.sleep(2000L);
-		PageMyAccount.button_IConfirmMyOrder().click();
+		button_IConfirmMyOrder().click();
 
 		
 		Thread.sleep(2000L);
 		Thread.sleep(2000L);
-		if(PageMyAccount.label_shippingConfirmation().getText().toString().contains("ORDER CONFIRMATION")) {
+		if(label_shippingConfirmation().getText().toString().contains("ORDER CONFIRMATION")) {
 			result=true;
-			pathToScreenshot=Utils.takeScreenshot(driver);
+			pathToScreenshot=Utils.takeScreenshot( BaseClass.driver);
 		     pdfgenerator.PDFcontent("Validate the Shipping confirmation page", pathToScreenshot);
 		     BaseClass.pathToScreenshot = pathToScreenshot;
 		}
@@ -514,12 +515,19 @@ public class PageMyAccount extends BaseClass{
 		
 	}
 
-	public boolean downloadPDFInvoice() throws Exception {
+	public static boolean downloadPDFInvoice() throws Exception {
+		
+		pathToScreenshot = "";
+		pathToScreenshot=Utils.takeScreenshot( BaseClass.driver);
+	    pdfgenerator.PDFcontent("Go back to Orders", pathToScreenshot);
+	    
 		link_BackToOrders().click();
 		//String totalPRice = BaseClass.auxValue;
 		
 		String pathDownloadDir = Utils.configProp().getProperty("pathDownload").toString();
 		
+		pathToScreenshot=Utils.takeScreenshot( BaseClass.driver);
+	    pdfgenerator.PDFcontent("Click in the Invoice to Download it", pathToScreenshot);
 		link_PDFInvoiceDownload().click();
 		
 		File pdfFile = Functions.getLatestFileFromDownload(pathDownloadDir);
@@ -528,6 +536,9 @@ public class PageMyAccount extends BaseClass{
 			result = true;
 			
 		System.out.println("THe file can be found on this directory: "+pdfFile.getAbsolutePath().toString());
+		
+		
+	    pdfgenerator.PDFaddText("THe PDF Invoice file can be found on this directory: "+pdfFile.getAbsolutePath().toString());
 			
 		}else {
 			result = false;

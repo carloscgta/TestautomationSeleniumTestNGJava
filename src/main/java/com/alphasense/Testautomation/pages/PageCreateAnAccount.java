@@ -16,9 +16,8 @@ import com.alphasense.Testautomation.utility.PDFGenerator;
 import com.alphasense.Testautomation.utility.Utils;
 
 public class PageCreateAnAccount extends BaseClass {
-
+	
 	private static WebElement element = null;
-	static WebDriver driver;
 	public static PDFGenerator pdfgenerator = new PDFGenerator();
 	public String pathToScreenshot;
 	public static boolean result;
@@ -413,7 +412,7 @@ public class PageCreateAnAccount extends BaseClass {
 		
 	     
 		 if(button_LoginIn().isDisplayed()) {
-			pathToScreenshot=Utils.takeScreenshot(driver);
+			pathToScreenshot=Utils.takeScreenshot( BaseClass.driver);
 		     pdfgenerator.PDFcontent("Click on Sigin Link", pathToScreenshot);
 		     Files.deleteIfExists(Paths.get(pathToScreenshot));
 		 	Thread.sleep(2000L);
@@ -422,7 +421,7 @@ public class PageCreateAnAccount extends BaseClass {
 	         Thread.sleep(2000L);
 	         Thread.sleep(2000L);
 	         Thread.sleep(2000L);
-	         driver.navigate().refresh();
+	         BaseClass.driver.navigate().refresh();
 	         
 			 PageCreateAnAccount.button_LoginIn().click();
 			  		Thread.sleep(2000L);
@@ -431,7 +430,7 @@ public class PageCreateAnAccount extends BaseClass {
 		         Thread.sleep(2000L);
 		         Thread.sleep(2000L);
 		         Thread.sleep(2000L);
-		         driver.navigate().refresh();
+		         BaseClass.driver.navigate().refresh();
 		 }
 		 if(input_emailCreate().isDisplayed()) {
 			 PageCreateAnAccount.input_emailCreate().sendKeys(Functions.randomAlphaEmail());
@@ -440,7 +439,7 @@ public class PageCreateAnAccount extends BaseClass {
 	
 		 
 		 if( button_createAccount().isDisplayed()) {
-			 pathToScreenshot=Utils.takeScreenshot(driver);
+			 pathToScreenshot=Utils.takeScreenshot( BaseClass.driver);
 		     pdfgenerator.PDFcontent("Filling the account required information", pathToScreenshot);
 		     Files.deleteIfExists(Paths.get(pathToScreenshot));
 			 PageCreateAnAccount.button_createAccount().click();
@@ -456,7 +455,7 @@ public class PageCreateAnAccount extends BaseClass {
 		 
 		 if( input_Lastname().isDisplayed()) {
 			 PageCreateAnAccount.input_Lastname().sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.Col_LastName).toString());
-			 pathToScreenshot=Utils.takeScreenshot(driver);
+			 pathToScreenshot=Utils.takeScreenshot( BaseClass.driver);
 		     pdfgenerator.PDFcontent("Filling the account required information", pathToScreenshot);
 		     Files.deleteIfExists(Paths.get(pathToScreenshot));
 		 }
@@ -472,7 +471,7 @@ public class PageCreateAnAccount extends BaseClass {
 		PageCreateAnAccount.selectBox_MonthByIndex(7);
 		PageCreateAnAccount.selectBox_Year(34);
 		
-		pathToScreenshot=Utils.takeScreenshot(driver);
+		pathToScreenshot=Utils.takeScreenshot( BaseClass.driver);
 	     pdfgenerator.PDFcontent("Filling the account required information", pathToScreenshot);
 	     Files.deleteIfExists(Paths.get(pathToScreenshot));
 		PageCreateAnAccount.input_AddressForm_FirstName().sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.Col_AddressFirstName).toString());
@@ -480,7 +479,7 @@ public class PageCreateAnAccount extends BaseClass {
 		PageCreateAnAccount.input_AddressForm_CompanyName().sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.Col_Expected).toString());    
 		
 		PageCreateAnAccount.input_AddressForm_Address01().sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.Col_AddressLine2).toString());
-		pathToScreenshot=Utils.takeScreenshot(driver);
+		pathToScreenshot=Utils.takeScreenshot( BaseClass.driver);
 	     pdfgenerator.PDFcontent("Filling the account required information", pathToScreenshot);
 	     Files.deleteIfExists(Paths.get(pathToScreenshot));
 		
@@ -492,7 +491,7 @@ public class PageCreateAnAccount extends BaseClass {
 		select_AddressForm_Country(1);
 		
 		PageCreateAnAccount.input_AddressForm_AdditionaInfor().sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.Col_AditionalInfo).toString());
-		pathToScreenshot=Utils.takeScreenshot(driver);
+		pathToScreenshot=Utils.takeScreenshot( BaseClass.driver);
 	    pdfgenerator.PDFcontent("Filling the account required information", pathToScreenshot);
 	    Files.deleteIfExists(Paths.get(pathToScreenshot));
 	     
@@ -500,15 +499,15 @@ public class PageCreateAnAccount extends BaseClass {
 		PageCreateAnAccount.input_Mobilephone().sendKeys("123456789");
 		
 		PageCreateAnAccount.input_AliasAddress().sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.Col_AddressAlias).toString());
-		pathToScreenshot=Utils.takeScreenshot(driver);
+		pathToScreenshot=Utils.takeScreenshot( BaseClass.driver);
 	    pdfgenerator.PDFcontent("Filling the account required information", pathToScreenshot);
 	    Files.deleteIfExists(Paths.get(pathToScreenshot));
 	     
 		PageCreateAnAccount.button_Register().click();
-	         
+		
 	        if(PageLogin.button_OrderHistoryDetails().isDisplayed()){
 	        	 result = true;
-	        	 pathToScreenshot=Utils.takeScreenshot(driver);
+	        	 pathToScreenshot=Utils.takeScreenshot( BaseClass.driver);
 	    	     pdfgenerator.PDFcontent("Click on button_createAccount", pathToScreenshot);
 	    	     Files.deleteIfExists(Paths.get(pathToScreenshot));
 	         }else {

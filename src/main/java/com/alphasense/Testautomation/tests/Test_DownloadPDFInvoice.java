@@ -16,71 +16,70 @@ import com.alphasense.Testautomation.utility.ExcelUtils;
 import com.alphasense.Testautomation.utility.Log;
 import com.alphasense.Testautomation.utility.PDFGenerator;
 import com.alphasense.Testautomation.utility.Utils;
-import com.beust.jcommander.Parameter;
 
-public class Test_PageMyAccountSearchClothes {
-	
-	public WebDriver driver = null;
+public class Test_DownloadPDFInvoice {
+
+	private WebDriver driver = null;
 	public static String sTestCaseName;
 	public static int iTestCaseRow;
-	public PageMyAccount pagemyaccount = new  PageMyAccount(driver) ;
+	public static boolean result;
 	PDFGenerator pdfgenerator = new PDFGenerator();
-	public PageLogin pagelogin = new PageLogin(driver);
-	public boolean loginResult = false;
-	public boolean result = false;
+	
 	  @BeforeMethod
 	  @Parameters
 	  public void beforeMethod() throws Exception {
-		 
+		  
 		  System.out.println( Utils.configProp().getProperty("uatlink").toString());
 		  System.out.println( Utils.configProp().getProperty("user").toString());
 		  System.out.println(  Utils.configProp().getProperty("passwd").toString());
 		  System.out.println( "This test search for Dresses and assert result count"+Utils.configProp().getProperty("keyWordSearch").toString());
 		  System.out.println( "The test report can be found in:"+Utils.configProp().getProperty("Path_ScreenShot").toString());
-		  
 		  DOMConfigurator.configure("log4j.xml");
 		  	sTestCaseName = this.toString();
 			sTestCaseName = Utils.getTestCaseName(this.toString());
 			String path= Utils.configProp().getProperty("Path_TestData").toString();
-			ExcelUtils.setExcelFile(path, "Test_PageMyAccountSearchClothes");
+			ExcelUtils.setExcelFile(path, "sheetOrderShipClothes");
 			iTestCaseRow = ExcelUtils.getRowContains(sTestCaseName,Constant.Col_TestCaseName);
 			Log.startTestCase(sTestCaseName);
 			
-		  driver = Utils.OpenBrowser(iTestCaseRow);
+		 driver = Utils.OpenBrowser(iTestCaseRow);
 		  pdfgenerator.startPDF(sTestCaseName);
 		
 			new BaseClass(driver);  
 	        }
 	  
-	  @Test(enabled=true)
-	  public void TestMethod() throws Exception {
+	 	  
+	  @Test
+	  public void TestDownloadInvoice() throws Exception {
 		  try{
-			loginResult = pagelogin.LoginIntoMyStore(Utils.configProp().getProperty("user").toString(),Utils.configProp().getProperty("passwd").toString());
-			
-			
-			result=pagemyaccount.searchClothes(Utils.configProp().getProperty("keyWordSearch").toString());
-			  
-			
+			  result = false;
 			 
-			if(loginResult =true  && result == true) {
+		boolean loginResult	=  PageLogin.LoginIntoMyStore(Utils.configProp().getProperty("user").toString(),Utils.configProp().getProperty("passwd").toString());
+			  
+		if(loginResult == true) {
+			PageMyAccount.shippingClothes();
+			
+			result=PageMyAccount.downloadPDFInvoice();
+			 
+		}
+
+			if(result == true) {
 				  ExcelUtils.setCellData("Passed", iTestCaseRow, Constant.Col_SetResultOrderClothes);  
-				  Assert.assertTrue(result, "Search was performed successfully");
-				 
 			  }
 
 		  }catch (Exception e){
 			 ExcelUtils.setCellData("Failed", iTestCaseRow, Constant.Col_SetResultOrderClothes);
 			
-			  Log.error("Fail",e);
+			  Log.error("", e);
 			  throw (e);
 		  }
 			
 	  }
+	  
 	  @AfterMethod
 	  public void afterMethod() throws Exception {
 		   Log.endTestCase(sTestCaseName);
 		   pdfgenerator.closePDF(result);
-		   driver.close();
+		  driver.close();
 	  		}
-	
 }

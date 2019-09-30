@@ -39,7 +39,7 @@ public class Test_PageCreateAnAccount{
 		  	
 			sTestCaseName = Utils.getTestCaseName(this.toString());
 			String pathtoData= Utils.configProp().getProperty("Path_TestData").toString();
-			ExcelUtils.setExcelFile(pathtoData, "Test_PageCreateAnAccount");
+			ExcelUtils.setExcelFile(pathtoData, "sheetCreateAccount");
 			iTestCaseRow = ExcelUtils.getRowContains(sTestCaseName,Constant.Col_setTestCaseName);
 			Log.startTestCase(sTestCaseName);
 			

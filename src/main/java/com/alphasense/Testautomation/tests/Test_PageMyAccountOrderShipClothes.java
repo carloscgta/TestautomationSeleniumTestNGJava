@@ -18,15 +18,12 @@ import com.alphasense.Testautomation.utility.PDFGenerator;
 import com.alphasense.Testautomation.utility.Utils;
 
 public class Test_PageMyAccountOrderShipClothes {
-	public WebDriver driver = null;
+	private WebDriver driver = null;
 	public static String sTestCaseName;
 	public static int iTestCaseRow;
-	public PageMyAccount pagemyaccount = new PageMyAccount(driver);
-	public PageLogin pagelogin = new PageLogin(driver);
 	public static boolean result;
 	PDFGenerator pdfgenerator = new PDFGenerator();
-
-
+	
 	  @BeforeMethod
 	  @Parameters
 	  public void beforeMethod() throws Exception {
@@ -44,7 +41,7 @@ public class Test_PageMyAccountOrderShipClothes {
 			iTestCaseRow = ExcelUtils.getRowContains(sTestCaseName,Constant.Col_TestCaseName);
 			Log.startTestCase(sTestCaseName);
 			
-		  driver = Utils.OpenBrowser(iTestCaseRow);
+		 driver = Utils.OpenBrowser(iTestCaseRow);
 		  pdfgenerator.startPDF(sTestCaseName);
 		
 			new BaseClass(driver);  
@@ -54,11 +51,12 @@ public class Test_PageMyAccountOrderShipClothes {
 	  @Test(priority=2, enabled=true)
 	  public void TestShippingClothes() throws Exception {
 		  try{
+			  
 			  result = false;
-		boolean loginResult	=  pagelogin.LoginIntoMyStore(Utils.configProp().getProperty("user").toString(),Utils.configProp().getProperty("passwd").toString());
+		boolean loginResult	=  PageLogin.LoginIntoMyStore(Utils.configProp().getProperty("user").toString(),Utils.configProp().getProperty("passwd").toString());
 			  
 		if(loginResult == true) {
-			result=pagemyaccount.shippingClothes();
+			result=PageMyAccount.shippingClothes();
 			 Assert.assertTrue(result, "Shipping confirmation page, check the screenshot in "+BaseClass.pathToScreenshot);
 		}
 				
@@ -68,41 +66,18 @@ public class Test_PageMyAccountOrderShipClothes {
 
 		  }catch (Exception e){
 			 ExcelUtils.setCellData("Failed", iTestCaseRow, Constant.Col_SetResultOrderClothes);
-			 Utils.takeScreenshot(driver);
+			 
 			  Log.error("",e);
 			  throw (e);
 		  }
 			
 	  }
 	  
-	  @Test(priority=1, enabled=true)
-	  public void TestDownloadInvoice() throws Exception {
-		  try{
-			  result = false;
-		boolean loginResult	=  pagelogin.LoginIntoMyStore(Utils.configProp().getProperty("user").toString(),Utils.configProp().getProperty("passwd").toString());
-			  
-		if(loginResult == true) {
-			pagemyaccount.shippingClothes();
-			result=pagemyaccount.downloadPDFInvoice();
-			 
-		}
-
-			if(result == true) {
-				  ExcelUtils.setCellData("Passed", iTestCaseRow, Constant.Col_SetResultOrderClothes);  
-			  }
-
-		  }catch (Exception e){
-			 ExcelUtils.setCellData("Failed", iTestCaseRow, Constant.Col_SetResultOrderClothes);
-			 Utils.takeScreenshot(driver);
-			  Log.error("", e);
-			  throw (e);
-		  }
-			
-	  }
+	 	  
 	  @AfterMethod
 	  public void afterMethod() throws Exception {
 		   Log.endTestCase(sTestCaseName);
 		   pdfgenerator.closePDF(result);
-		   driver.close();
+		  driver.close();
 	  		}
 }

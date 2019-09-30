@@ -23,7 +23,7 @@ import com.itextpdf.text.DocumentException;
 
 public class Test_PageLogin {
 
-	public WebDriver driver = null;
+	private WebDriver driver = null;
 	public static String sTestCaseName;
 	public static int iTestCaseRow;
 	public static boolean result;

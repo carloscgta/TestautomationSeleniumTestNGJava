@@ -22,7 +22,7 @@ import com.itextpdf.text.DocumentException;
 public class Test_PageInvalidLogin{
 
 
-	public WebDriver driver = null;
+	WebDriver driver = null;
 	public static String sTestCaseName;
 	public static int iTestCaseRow;
 	PDFGenerator pdfgenerator = new PDFGenerator();
